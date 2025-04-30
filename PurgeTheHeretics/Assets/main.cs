@@ -14,9 +14,9 @@ public class main : MonoBehaviour
 
     public int ROWS = 7;
     public int COLUMNS = 7;
-    public float SPACING = 2.0f;
-    public int enemyObjectPositionRow = 0;
-    public int enemyObjectPositionCol = 0;
+    public float SPACING = 0.5f;
+    public int enemyObjectPositionRow = 7;
+    public int enemyObjectPositionCol = 7;
     public int homeObjectPositionRow = 0;
     public int homeObjectPositionCol = 0;
 
