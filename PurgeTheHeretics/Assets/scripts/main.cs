@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Security.Cryptography.X509Certificates;
 using JetBrains.Annotations;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class main : MonoBehaviour
@@ -15,6 +16,8 @@ public class main : MonoBehaviour
     public GameObject EnemyTankDeploy;
     public GameObject enemyObjective;
 
+    public TurnDecider turnToPlay;
+
     public int ROWS = 7;
     public int COLUMNS = 7;
     public float SPACING = 0.5f;
@@ -23,12 +26,26 @@ public class main : MonoBehaviour
     public int homeObjectPositionRow = 0;
     public int homeObjectPositionCol = 0;
     public int homeSquadStrength = 6;
-    public int centeringVariable = 0;
+    public int centeringVariable = 3;
+    public string CurrentPhase = "Movement";
+    public string Turn = "";
+
 
     // Start is called before the first frame update
     void Start()
     {
         GridGenerate();
+        turnToPlay.TurnToDecide();
+        Debug.Log(turnToPlay.turnDecider);
+        if (turnToPlay.turnDecider <= 3)
+        {
+            Turn = "Enemy";
+        }
+        else if (turnToPlay.turnDecider >=4)
+        {
+            Turn = "Home";
+        }
+        Debug.Log(Turn);
     }
 
     // Update is called once per frame
@@ -66,6 +83,17 @@ public class main : MonoBehaviour
         Instantiate(homeTankDeploy, homeTankPos, Quaternion.identity);
     }
 
+}
+public class Stats: MonoBehaviour
+{
+    public int attacks = 0;
+    public int accuracy = 0;
+    public int strength = 0;
+    public int AP = 0;
+    public int damage= 0;
+    public int toughness = 0;
+    public int save = 0;
+    public int wounds = 0;
 }
 
 
