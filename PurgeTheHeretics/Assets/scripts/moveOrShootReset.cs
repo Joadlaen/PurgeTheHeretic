@@ -4,8 +4,10 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class turnPassScript : MonoBehaviour, IPointerDownHandler
+public class moveOrShootReset : MonoBehaviour, IPointerDownHandler
 {
+    public GameObject BattleFieldSprite;
+    public GameObject MoveTint;
     public void OnPointerDown(PointerEventData eventData)
     {
 

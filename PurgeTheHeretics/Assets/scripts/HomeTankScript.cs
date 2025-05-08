@@ -12,6 +12,7 @@ public class HomeTankScript : MonoBehaviour, IPointerDownHandler
     public GameObject moveTint;
     public GameObject shootTint;
     public GameObject enemySquad;
+    public bool movedPiece = false;
 
     public main mainScript;
 
@@ -19,6 +20,7 @@ public class HomeTankScript : MonoBehaviour, IPointerDownHandler
     const int MOVEMENT = 2;
     const int SPACING = 1;
     const int centeringVariable = 0;
+
 
 
 
@@ -42,12 +44,17 @@ public class HomeTankScript : MonoBehaviour, IPointerDownHandler
 
     public void moveDirectionGenerate()
     {
-        for (int i = 0; i < MOVEMENT; i++)
-        {
-            for (int j = 0; j < MOVEMENT; j++)
+        while (!movedPiece)
+        { 
+            for (int x = -1; x < 2; x += 2)
             {
-                Vector2 position = new Vector2(j * SPACING - centeringVariable, i * SPACING - centeringVariable);
-                Instantiate(moveTint, position, Quaternion.identity);
+                for (int y = 0; y < MOVEMENT; y++)
+                {
+                    Vector2 position1 = new Vector2(y * x * SPACING - centeringVariable, 0);
+                    Vector2 position2 = new Vector2(0, y * x * SPACING - centeringVariable);
+                    Instantiate(moveTint, position1, Quaternion.identity);
+                    Instantiate(moveTint, position2, Quaternion.identity);
+                }
             }
         }
     }

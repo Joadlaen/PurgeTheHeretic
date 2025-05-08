@@ -4,15 +4,11 @@ using UnityEngine;
 
 public class HomeObjectiveScript : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public void OnCollisionEnter(Collision collision)
     {
-        
-    }
+        if (collision.gameObject.tag == "EnemySquad" || collision.gameObject.tag == "EnemyTank")
+        {
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        }
     }
 }

@@ -7,6 +7,7 @@ using UnityEngine;
 
 public class main : MonoBehaviour
 {
+
     public GameObject battleFieldSprite;
     public GameObject battleFieldCover;
     public GameObject homeSquadDeploy;
@@ -16,6 +17,11 @@ public class main : MonoBehaviour
     public GameObject EnemyTankDeploy;
     public GameObject enemyObjective;
 
+
+    public EnemyTankScript enemyTankScript;
+    public EnemySquadScript enemySquadScript;
+    public HomeTankScript homeTankScript;
+    public HomeSquadScript homeSquadScript;
     public TurnDecider turnToPlay;
 
     public int ROWS = 7;
@@ -88,12 +94,11 @@ public class Stats: MonoBehaviour
 {
     public int attacks = 0;
     public int accuracy = 0;
-    public int strength = 0;
-    public int AP = 0;
+    public int wounding = 0;
     public int damage= 0;
-    public int toughness = 0;
-    public int save = 0;
     public int wounds = 0;
+    public int rowPos = 0;
+    public int colPos = 0;
 }
 
 
