@@ -8,6 +8,8 @@ using static UnityEngine.Rendering.DebugUI.Table;
 
 public class HomeSquadScript : MonoBehaviour, IPointerDownHandler
 {
+    public Vector2 homeSquadMovement; // Store movement input
+
     System.Random D6 = new System.Random();
     public GameObject moveTint;
     public GameObject shootTint;
@@ -44,10 +46,10 @@ public class HomeSquadScript : MonoBehaviour, IPointerDownHandler
     {
         for (int x = -1; x < 2; x+= 2)
         {
-            for (int y = 0; y < MOVEMENT; y++)
+            for (int y = 1; y < MOVEMENT; y++)
             {
-                Vector2 position1 = new Vector2(y*x*SPACING - centeringVariable, 0);
-                Vector2 position2 = new Vector2(0, y*x * SPACING - centeringVariable);
+                Vector2 position1 = new Vector2(homeSquadMovement.x + (y*x*SPACING) - centeringVariable, homeSquadMovement.y);
+                Vector2 position2 = new Vector2(homeSquadMovement.x, homeSquadMovement.y + (y*x * SPACING) - centeringVariable);
                 Instantiate(moveTint, position1, Quaternion.identity);
                 Instantiate(moveTint, position2, Quaternion.identity);
             }
@@ -57,4 +59,8 @@ public class HomeSquadScript : MonoBehaviour, IPointerDownHandler
     {
 
     }
+}
+public class HomeSquadStats : Stats
+{
+
 }

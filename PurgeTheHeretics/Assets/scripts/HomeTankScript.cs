@@ -8,6 +8,10 @@ using static UnityEngine.Rendering.DebugUI.Table;
 
 public class HomeTankScript : MonoBehaviour, IPointerDownHandler
 {
+
+    public Vector2 homeTankMovement; // Store movement input
+
+
     System.Random D6 = new System.Random();
     public GameObject moveTint;
     public GameObject shootTint;
@@ -50,8 +54,8 @@ public class HomeTankScript : MonoBehaviour, IPointerDownHandler
             {
                 for (int y = 0; y < MOVEMENT; y++)
                 {
-                    Vector2 position1 = new Vector2(y * x * SPACING - centeringVariable, 0);
-                    Vector2 position2 = new Vector2(0, y * x * SPACING - centeringVariable);
+                    Vector2 position1 = new Vector2(homeTankMovement.x + (y * x * SPACING) - centeringVariable, homeTankMovement.y);
+                    Vector2 position2 = new Vector2(homeTankMovement.x, homeTankMovement.y + (y * x * SPACING) - centeringVariable);
                     Instantiate(moveTint, position1, Quaternion.identity);
                     Instantiate(moveTint, position2, Quaternion.identity);
                 }
@@ -60,6 +64,23 @@ public class HomeTankScript : MonoBehaviour, IPointerDownHandler
     }
     public void shootDirectionGenerate()
     {
-
+        while (!movedPiece)
+        {
+            for (int x = -1; x < 2; x += 2)
+            {
+                for (int y = 1; y < MOVEMENT; y++)
+                {
+                    Vector2 position1 = new Vector2(y * x * SPACING - centeringVariable, 0);
+                    Vector2 position2 = new Vector2(0, y * x * SPACING - centeringVariable);
+                    Instantiate(moveTint, position1, Quaternion.identity);
+                    Instantiate(moveTint, position2, Quaternion.identity);
+                }
+            }
+        }
     }
+}
+
+public class HomeTankStats : Stats
+{
+
 }

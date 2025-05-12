@@ -7,6 +7,7 @@ using UnityEngine;
 
 public class main : MonoBehaviour
 {
+    public string[,] gridTracker;
 
     public GameObject battleFieldSprite;
     public GameObject battleFieldCover;
@@ -36,10 +37,14 @@ public class main : MonoBehaviour
     public string CurrentPhase = "Movement";
     public string Turn = "";
 
+    //        bool[,] blockedSquares = new bool[GRID_SIZE, GRID_SIZE];
+
+
 
     // Start is called before the first frame update
     void Start()
     {
+        string[,] gridTracker = new string[ROWS, COLUMNS];
         GridGenerate();
         turnToPlay.TurnToDecide();
         Debug.Log(turnToPlay.turnDecider);
@@ -57,7 +62,19 @@ public class main : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        if (enemySquadScript.enabled == true) // homeSquadScript != null && homeTankScript != null && enemyTankScript != null)
+        {
+            gridTracker[(int)enemySquadScript.enemySquadMovement.x, (int)enemySquadScript.enemySquadMovement.y] = "EnSquad";
+        }
+        {
+            gridTracker[(int)homeSquadScript.homeSquadMovement.x, (int)homeSquadScript.homeSquadMovement.y] = "HomeSquad";
+        }
+        {
+            gridTracker[(int)homeTankScript.homeTankMovement.x, (int)homeTankScript.homeTankMovement.y] = "HomeTank";
+        }
+        { 
+            gridTracker[(int)enemyTankScript.enemyTankMovement.x, (int)enemyTankScript.enemyTankMovement.y] = "EnTank";
+        }
     }
 
     public void GridGenerate()

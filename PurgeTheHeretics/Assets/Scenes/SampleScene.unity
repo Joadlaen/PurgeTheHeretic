@@ -132,6 +132,7 @@ GameObject:
   m_Component:
   - component: {fileID: 10660237}
   - component: {fileID: 10660236}
+  - component: {fileID: 10660238}
   m_Layer: 0
   m_Name: can'tMove
   m_TagString: Untagged
@@ -200,12 +201,57 @@ Transform:
   m_GameObject: {fileID: 10660235}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 25.2, y: -0.38, z: 0}
+  m_LocalPosition: {x: 21.86, y: -11.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &10660238
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 10660235}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 3
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
 --- !u!1 &111725929
 GameObject:
   m_ObjectHideFlags: 0
@@ -234,7 +280,7 @@ Transform:
   m_GameObject: {fileID: 111725929}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -4.1, y: 4.74, z: -0.013500055}
+  m_LocalPosition: {x: -7.44, y: -6.38, z: -0.013500055}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -304,6 +350,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3635bdfbe11e7043ba659c113e2c96b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyTankMovement: {x: 0, y: 0}
   moveTint: {fileID: 533552753}
   shootTint: {fileID: 1626605251}
   enemySquad: {fileID: 111725929}
@@ -525,7 +572,7 @@ Transform:
   m_GameObject: {fileID: 187509418}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -7.38, y: 2.41, z: -0.013500055}
+  m_LocalPosition: {x: -10.72, y: -8.71, z: -0.013500055}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -595,6 +642,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca82d596ee5b81f49a2c533cb3d575a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  homeSquadMovement: {x: 0, y: 0}
   moveTint: {fileID: 533552753}
   shootTint: {fileID: 1626605251}
   enemySquad: {fileID: 187509418}
@@ -655,6 +703,7 @@ GameObject:
   - component: {fileID: 227091522}
   - component: {fileID: 227091521}
   - component: {fileID: 227091520}
+  - component: {fileID: 227091523}
   m_Layer: 0
   m_Name: pass turn
   m_TagString: Untagged
@@ -775,6 +824,19 @@ Transform:
   - {fileID: 1855749645}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &227091523
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 227091519}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57f24024d46ffa54a9011f4228222fca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mainScript: {fileID: 1242163254}
 --- !u!1 &257196196
 GameObject:
   m_ObjectHideFlags: 0
@@ -803,7 +865,7 @@ Transform:
   m_GameObject: {fileID: 257196196}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -4.12, y: 2.23, z: -0.013500055}
+  m_LocalPosition: {x: -7.46, y: -8.889999, z: -0.013500055}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -873,9 +935,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73d6ff34f0ac2ea498eb1ff650520994, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  homeTankMovement: {x: 0, y: 0}
   moveTint: {fileID: 533552753}
   shootTint: {fileID: 1626605251}
   enemySquad: {fileID: 257196196}
+  movedPiece: 0
   mainScript: {fileID: 1242163254}
 --- !u!61 &257196200
 BoxCollider2D:
@@ -950,7 +1014,7 @@ Transform:
   m_GameObject: {fileID: 462903327}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -10.35, y: 4.74, z: 0}
+  m_LocalPosition: {x: -13.690001, y: -6.38, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -1299,7 +1363,7 @@ Transform:
   m_GameObject: {fileID: 533552753}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 18.93, y: -0.29, z: 2}
+  m_LocalPosition: {x: 15.59, y: -11.41, z: 2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1321,7 +1385,7 @@ BoxCollider2D:
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0
-  m_LayerOverridePriority: 0
+  m_LayerOverridePriority: 3
   m_ForceSendLayers:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -1362,11 +1426,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8379cca4d9b416c45a711179a75dbec7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  homeTank: {fileID: 257196196}
-  enemyTank: {fileID: 111725929}
-  homeSquad: {fileID: 187509418}
-  enemySquad: {fileID: 546885127}
-  movePos: {fileID: 533552753}
+  homeTankScript: {fileID: 0}
+  homeSquadScript: {fileID: 0}
+  enemyTankScript: {fileID: 0}
+  enemySquadScript: {fileID: 0}
 --- !u!1 &546885127
 GameObject:
   m_ObjectHideFlags: 0
@@ -1395,7 +1458,7 @@ Transform:
   m_GameObject: {fileID: 546885127}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -7.04, y: 4.89, z: -0.013500055}
+  m_LocalPosition: {x: -10.38, y: -6.23, z: -0.013500055}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -1465,10 +1528,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0aef46bff8671e347b58a13df3f01c84, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemySquadMovement: {x: 0, y: 0}
   moveTint: {fileID: 533552753}
   shootTint: {fileID: 1626605251}
   enemySquad: {fileID: 546885127}
   mainScript: {fileID: 1242163254}
+  enSquadStats: {fileID: 0}
 --- !u!61 &546885131
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1542,7 +1607,7 @@ Transform:
   m_GameObject: {fileID: 612854465}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -10.45, y: 2.43, z: -0.013500055}
+  m_LocalPosition: {x: -13.79, y: -8.69, z: -0.013500055}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -1795,6 +1860,10 @@ MonoBehaviour:
   EnemySquadDeploy: {fileID: 546885127}
   EnemyTankDeploy: {fileID: 111725929}
   enemyObjective: {fileID: 462903327}
+  enemyTankScript: {fileID: 0}
+  enemySquadScript: {fileID: 0}
+  homeTankScript: {fileID: 0}
+  homeSquadScript: {fileID: 0}
   turnToPlay: {fileID: 157332660}
   ROWS: 7
   COLUMNS: 7
@@ -1819,11 +1888,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8379cca4d9b416c45a711179a75dbec7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  homeTank: {fileID: 257196196}
-  enemyTank: {fileID: 111725929}
-  homeSquad: {fileID: 187509418}
-  enemySquad: {fileID: 546885127}
-  movePos: {fileID: 533552753}
+  homeTankScript: {fileID: 257196199}
+  homeSquadScript: {fileID: 187509421}
+  enemyTankScript: {fileID: 111725932}
+  enemySquadScript: {fileID: 546885130}
 --- !u!114 &1242163256
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2167,7 +2235,7 @@ Transform:
   m_GameObject: {fileID: 1570886845}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.82, y: 2.18, z: -0.013500055}
+  m_LocalPosition: {x: -4.1600003, y: -8.94, z: -0.013500055}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -2266,7 +2334,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -2309,7 +2377,7 @@ Transform:
   m_GameObject: {fileID: 1613160348}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.9, y: 4.72, z: 0}
+  m_LocalPosition: {x: -4.2400002, y: -6.4, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -2383,7 +2451,7 @@ BoxCollider2D:
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0
-  m_LayerOverridePriority: 0
+  m_LayerOverridePriority: -1
   m_ForceSendLayers:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -2492,7 +2560,7 @@ Transform:
   m_GameObject: {fileID: 1626605251}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 22.01, y: -0.3, z: 2}
+  m_LocalPosition: {x: 18.67, y: -11.42, z: 2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2514,7 +2582,7 @@ BoxCollider2D:
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0
-  m_LayerOverridePriority: 0
+  m_LayerOverridePriority: 3
   m_ForceSendLayers:
     serializedVersion: 2
     m_Bits: 4294967295
