@@ -1860,10 +1860,10 @@ MonoBehaviour:
   EnemySquadDeploy: {fileID: 546885127}
   EnemyTankDeploy: {fileID: 111725929}
   enemyObjective: {fileID: 462903327}
-  enemyTankScript: {fileID: 0}
-  enemySquadScript: {fileID: 0}
-  homeTankScript: {fileID: 0}
-  homeSquadScript: {fileID: 0}
+  enemyTankScript: {fileID: 111725932}
+  enemySquadScript: {fileID: 546885130}
+  homeTankScript: {fileID: 257196199}
+  homeSquadScript: {fileID: 187509421}
   turnToPlay: {fileID: 157332660}
   ROWS: 7
   COLUMNS: 7

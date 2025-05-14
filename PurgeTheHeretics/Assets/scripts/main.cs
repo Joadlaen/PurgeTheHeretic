@@ -62,16 +62,19 @@ public class main : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (enemySquadScript.enabled == true) // homeSquadScript != null && homeTankScript != null && enemyTankScript != null)
+        if (enemySquadScript.enabled == true) 
         {
             gridTracker[(int)enemySquadScript.enemySquadMovement.x, (int)enemySquadScript.enemySquadMovement.y] = "EnSquad";
         }
+        if (homeSquadScript.enabled == true)
         {
             gridTracker[(int)homeSquadScript.homeSquadMovement.x, (int)homeSquadScript.homeSquadMovement.y] = "HomeSquad";
         }
+        if (homeTankScript.enabled == true)
         {
             gridTracker[(int)homeTankScript.homeTankMovement.x, (int)homeTankScript.homeTankMovement.y] = "HomeTank";
         }
+        if (enemuTankScript.enabled == true)
         { 
             gridTracker[(int)enemyTankScript.enemyTankMovement.x, (int)enemyTankScript.enemyTankMovement.y] = "EnTank";
         }
