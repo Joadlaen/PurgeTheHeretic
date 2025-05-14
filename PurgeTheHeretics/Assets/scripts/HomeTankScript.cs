@@ -41,7 +41,6 @@ public class HomeTankScript : MonoBehaviour, IPointerDownHandler
     {
         if (mainScript != null && mainScript.Turn == "Home")
         {
-            int Advancer = D6.Next(1, 7);
             Debug.Log("EnemySquad");
             if (mainScript.CurrentPhase == "Movement")
             {

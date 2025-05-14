@@ -16,6 +16,7 @@ public class EnemyTankScript : MonoBehaviour, IPointerDownHandler
     public GameObject moveTint;
     public GameObject shootTint;
     public GameObject enemySquad;
+    public bool movedPiece = false;
 
     public main mainScript;
     public moveHereScript moverScript;
@@ -37,9 +38,8 @@ public class EnemyTankScript : MonoBehaviour, IPointerDownHandler
 
     public void OnPointerDown(PointerEventData eventData)
     {
-        if (mainScript != null && mainScript.Turn == "Enemy")
+        if (mainScript.Turn == "Enemy")
         {
-            int Advancer = D6.Next(1, 7);
             Debug.Log("EnemySquad");
             if (mainScript.CurrentPhase == "Movement")
             {
@@ -69,7 +69,16 @@ public class EnemyTankScript : MonoBehaviour, IPointerDownHandler
     }
     public void shootDirectionGenerate()
     {
-
+        for (int x = -1; x < 2; x += 2)
+        {
+            for (int y = 1; y <= RANGE; y++)
+            {
+                Vector2 position1 = new Vector2(enemyTankMovement.x + (y * x * SPACING) - centeringVariable, enemyTankMovement.y);
+                Vector2 position2 = new Vector2(enemyTankMovement.x, enemyTankMovement.y + (y * x * SPACING) - centeringVariable);
+                Instantiate(shootTint, position1, Quaternion.identity);
+                Instantiate(shootTint, position2, Quaternion.identity);
+            }
+        }
     }
 }
 public class EnemyTankStats : Stats

@@ -12,13 +12,14 @@ public class EnemySquadScript : MonoBehaviour, IPointerDownHandler
     public GameObject moveTint;
     public GameObject shootTint;
     public GameObject enemySquad;
+    public bool movedPiece = false;
 
     public main mainScript;
     public moveHereScript moverScript;
     public shootThisScript shooterScript;
 
     const int RANGE = 6;
-    const int MOVEMENT = 2;
+    const int MOVEMENT = 1;
     const int SPACING = 1;
     const int centeringVariable = 0;
 
@@ -35,8 +36,7 @@ public class EnemySquadScript : MonoBehaviour, IPointerDownHandler
     public void OnPointerDown(PointerEventData eventData)
     {
         if (mainScript != null && mainScript.Turn == "Enemy")
-        {
-            int Advancer = D6.Next(1, 7);
+        { 
             Debug.Log("EnemySquad");
             if (mainScript.CurrentPhase == "Movement")
             {
