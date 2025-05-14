@@ -18,11 +18,19 @@ public class EnemyTankScript : MonoBehaviour, IPointerDownHandler
     public GameObject enemySquad;
 
     public main mainScript;
+    public moveHereScript moverScript;
+    public shootThisScript shooterScript;
 
     const int RANGE = 6;
     const int MOVEMENT = 2;
     const int SPACING = 1;
     const int centeringVariable = 0;
+
+    public void Start()
+    {
+        enemyTankMovement.x = mainScript.enemyTankPos.x;
+        enemyTankMovement.y = mainScript.enemyTankPos.y;
+    }
 
 
 
@@ -36,10 +44,12 @@ public class EnemyTankScript : MonoBehaviour, IPointerDownHandler
             if (mainScript.CurrentPhase == "Movement")
             {
                 moveDirectionGenerate();
+                moverScript.nameToMove = "EnTank";
             }
             if (mainScript.CurrentPhase == "Shooting")
             {
                 shootDirectionGenerate();
+                shooterScript.nameShooting = "EnTank";
             }
         }
     }
@@ -48,7 +58,7 @@ public class EnemyTankScript : MonoBehaviour, IPointerDownHandler
     {
         for (int x = -1; x < 2; x += 2)
         {
-            for (int y = 1; y < MOVEMENT; y++)
+            for (int y = 1; y <= MOVEMENT; y++)
             {
                 Vector2 position1 = new Vector2(enemyTankMovement.x + (y * x * SPACING) - centeringVariable, enemyTankMovement.y);
                 Vector2 position2 = new Vector2(enemyTankMovement.x, enemyTankMovement.y + (y * x * SPACING) - centeringVariable);

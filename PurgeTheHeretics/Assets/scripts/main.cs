@@ -9,6 +9,11 @@ public class main : MonoBehaviour
 {
     public string[,] gridTracker;
 
+    public Vector2 enemySquadPos;
+    public Vector2 enemyTankPos;
+    public Vector2 homeSquadPos;
+    public Vector2 homeTankPos;
+
     public GameObject battleFieldSprite;
     public GameObject battleFieldCover;
     public GameObject homeSquadDeploy;
@@ -44,7 +49,7 @@ public class main : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        string[,] gridTracker = new string[ROWS, COLUMNS];
+        gridTracker = new string[ROWS, COLUMNS];
         GridGenerate();
         turnToPlay.TurnToDecide();
         Debug.Log(turnToPlay.turnDecider);
@@ -74,7 +79,7 @@ public class main : MonoBehaviour
         {
             gridTracker[(int)homeTankScript.homeTankMovement.x, (int)homeTankScript.homeTankMovement.y] = "HomeTank";
         }
-        if (enemuTankScript.enabled == true)
+        if (enemyTankScript.enabled == true)
         { 
             gridTracker[(int)enemyTankScript.enemyTankMovement.x, (int)enemyTankScript.enemyTankMovement.y] = "EnTank";
         }
@@ -96,29 +101,28 @@ public class main : MonoBehaviour
         Vector2 homeObjectivePos = new Vector2(homeObjectPositionCol * SPACING - centeringVariable, homeObjectPositionRow * SPACING - centeringVariable);
         Instantiate(homeObjective, homeObjectivePos, Quaternion.identity);
 
-        Vector2 enemySquadPos = new Vector2(enemyObjectPositionCol * SPACING - (SPACING*2) - centeringVariable, enemyObjectPositionRow * SPACING - SPACING - centeringVariable);
+        enemySquadPos = new Vector2(enemyObjectPositionCol * SPACING - (SPACING*2) - centeringVariable, enemyObjectPositionRow * SPACING - SPACING - centeringVariable);
         Instantiate(EnemySquadDeploy, enemySquadPos, Quaternion.identity);
 
-        Vector2 homeSquadPos = new Vector2(homeObjectPositionCol * SPACING - centeringVariable, homeObjectPositionRow * SPACING - centeringVariable + SPACING);
+        homeSquadPos = new Vector2(homeObjectPositionCol * SPACING - centeringVariable, homeObjectPositionRow * SPACING - centeringVariable + SPACING);
         Instantiate(homeSquadDeploy, homeSquadPos, Quaternion.identity);
 
-        Vector2 enemyTankPos = new Vector2(enemyObjectPositionCol * SPACING - SPACING - centeringVariable, enemyObjectPositionRow * SPACING - SPACING - centeringVariable - SPACING);
+        enemyTankPos = new Vector2(enemyObjectPositionCol * SPACING - SPACING - centeringVariable, enemyObjectPositionRow * SPACING - SPACING - centeringVariable - SPACING);
         Instantiate(EnemyTankDeploy, enemyTankPos, Quaternion.identity);
 
-        Vector2 homeTankPos = new Vector2(homeObjectPositionCol * SPACING + SPACING - centeringVariable, homeObjectPositionRow * SPACING - centeringVariable);
+        homeTankPos = new Vector2(homeObjectPositionCol * SPACING + SPACING - centeringVariable, homeObjectPositionRow * SPACING - centeringVariable);
         Instantiate(homeTankDeploy, homeTankPos, Quaternion.identity);
     }
 
 }
 public class Stats: MonoBehaviour
 {
+    public string pieceName = "";
     public int attacks = 0;
     public int accuracy = 0;
     public int wounding = 0;
     public int damage= 0;
     public int wounds = 0;
-    public int rowPos = 0;
-    public int colPos = 0;
 }
 
 

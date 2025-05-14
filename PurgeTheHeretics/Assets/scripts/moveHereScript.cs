@@ -14,9 +14,13 @@ public class moveHereScript : MonoBehaviour
     public EnemyTankScript enemyTankScript;
 
     public EnemySquadScript enemySquadScript;
+
+    public string nameToMove = "";
     //shows where the object should move
     public void OnPointerDown(PointerEventData eventData)
     {
+
+
         Vector2 WorldPos = eventData.position;
 
         MoveSprite(WorldPos);

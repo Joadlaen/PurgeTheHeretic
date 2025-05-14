@@ -19,12 +19,20 @@ public class HomeTankScript : MonoBehaviour, IPointerDownHandler
     public bool movedPiece = false;
 
     public main mainScript;
+    public moveHereScript moverScript;
+    public shootThisScript shooterScript;
 
     const int RANGE = 6;
     const int MOVEMENT = 2;
     const int SPACING = 1;
     const int centeringVariable = 0;
 
+
+    public void Start()
+    {
+        homeTankMovement.x = mainScript.homeTankPos.x;
+        homeTankMovement.y = mainScript.homeTankPos.y;
+    }
 
 
 
@@ -52,7 +60,7 @@ public class HomeTankScript : MonoBehaviour, IPointerDownHandler
         { 
             for (int x = -1; x < 2; x += 2)
             {
-                for (int y = 0; y < MOVEMENT; y++)
+                for (int y = 0; y <= MOVEMENT; y++)
                 {
                     Vector2 position1 = new Vector2(homeTankMovement.x + (y * x * SPACING) - centeringVariable, homeTankMovement.y);
                     Vector2 position2 = new Vector2(homeTankMovement.x, homeTankMovement.y + (y * x * SPACING) - centeringVariable);

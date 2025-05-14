@@ -14,13 +14,19 @@ public class EnemySquadScript : MonoBehaviour, IPointerDownHandler
     public GameObject enemySquad;
 
     public main mainScript;
+    public moveHereScript moverScript;
+    public shootThisScript shooterScript;
 
     const int RANGE = 6;
     const int MOVEMENT = 2;
     const int SPACING = 1;
     const int centeringVariable = 0;
 
-    public Stats enSquadStats = new Stats();
+    public void Start()
+    {
+        enemySquadMovement.x = mainScript.enemySquadPos.x;
+        enemySquadMovement.y = mainScript.enemySquadPos.y;
+    }
 
 
 
@@ -35,10 +41,12 @@ public class EnemySquadScript : MonoBehaviour, IPointerDownHandler
             if (mainScript.CurrentPhase == "Movement")
             {
                 moveDirectionGenerate();
+                moverScript.nameToMove = "EnSquad";
             }
             if (mainScript.CurrentPhase == "Shooting")
             {
                 shootDirectionGenerate();
+                shooterScript.nameShooting = "EnSquad";
             }
         }
     }
@@ -47,7 +55,7 @@ public class EnemySquadScript : MonoBehaviour, IPointerDownHandler
     {
         for (int x = -1; x < 2; x += 2)
         {
-            for (int y = 1; y < MOVEMENT; y++)
+            for (int y = 1; y <= MOVEMENT; y++)
             {
                 Vector2 position1 = new Vector2(enemySquadMovement.x + (y * x * SPACING) - centeringVariable, enemySquadMovement.y);
                 Vector2 position2 = new Vector2(enemySquadMovement.x, enemySquadMovement.y + (y * x * SPACING) - centeringVariable);
