@@ -355,7 +355,10 @@ MonoBehaviour:
   moveTint: {fileID: 533552753}
   shootTint: {fileID: 1626605251}
   enemySquad: {fileID: 111725929}
+  movedPiece: 0
   mainScript: {fileID: 1242163254}
+  moverScript: {fileID: 0}
+  shooterScript: {fileID: 0}
 --- !u!61 &111725933
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -675,7 +678,10 @@ MonoBehaviour:
   moveTint: {fileID: 533552753}
   shootTint: {fileID: 1626605251}
   enemySquad: {fileID: 187509418}
+  movedPiece: 0
   mainScript: {fileID: 1242163254}
+  moverScript: {fileID: 533552757}
+  shooterScript: {fileID: 1626605255}
 --- !u!61 &187509422
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -998,6 +1004,8 @@ MonoBehaviour:
   enemySquad: {fileID: 257196196}
   movedPiece: 0
   mainScript: {fileID: 1242163254}
+  moverScript: {fileID: 533552757}
+  shooterScript: {fileID: 1626605255}
 --- !u!61 &257196200
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1510,10 +1518,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8379cca4d9b416c45a711179a75dbec7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  homeTankScript: {fileID: 0}
-  homeSquadScript: {fileID: 0}
-  enemyTankScript: {fileID: 0}
-  enemySquadScript: {fileID: 0}
+  homeTankScript: {fileID: 257196199}
+  homeSquadScript: {fileID: 187509421}
+  enemyTankScript: {fileID: 111725932}
+  enemySquadScript: {fileID: 546885130}
+  nameToMove: 
 --- !u!1 &546885127
 GameObject:
   m_ObjectHideFlags: 0
@@ -1617,8 +1626,10 @@ MonoBehaviour:
   moveTint: {fileID: 533552753}
   shootTint: {fileID: 1626605251}
   enemySquad: {fileID: 546885127}
+  movedPiece: 0
   mainScript: {fileID: 1242163254}
-  enSquadStats: {fileID: 0}
+  moverScript: {fileID: 0}
+  shooterScript: {fileID: 0}
 --- !u!61 &546885131
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1963,6 +1974,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65283dfde62ca0b4a854a30727dc64af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemySquadPos: {x: 0, y: 0}
+  enemyTankPos: {x: 0, y: 0}
+  homeSquadPos: {x: 0, y: 0}
+  homeTankPos: {x: 0, y: 0}
   battleFieldSprite: {fileID: 1613160348}
   battleFieldCover: {fileID: 0}
   homeSquadDeploy: {fileID: 187509418}
@@ -2003,6 +2018,7 @@ MonoBehaviour:
   homeSquadScript: {fileID: 187509421}
   enemyTankScript: {fileID: 111725932}
   enemySquadScript: {fileID: 546885130}
+  nameToMove: 
 --- !u!114 &1242163256
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2020,6 +2036,7 @@ MonoBehaviour:
   homeSquad: {fileID: 187509418}
   enemySquad: {fileID: 546885127}
   shootPos: {fileID: 1626605251}
+  nameShooting: 
 --- !u!1 &1502443721
 GameObject:
   m_ObjectHideFlags: 0
@@ -2727,6 +2744,7 @@ MonoBehaviour:
   homeSquad: {fileID: 187509418}
   enemySquad: {fileID: 546885127}
   shootPos: {fileID: 1626605251}
+  nameShooting: 
 --- !u!1 &1676691871
 GameObject:
   m_ObjectHideFlags: 0
