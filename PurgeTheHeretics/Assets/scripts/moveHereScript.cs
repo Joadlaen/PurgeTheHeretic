@@ -22,6 +22,7 @@ public class moveHereScript : MonoBehaviour
     public GameObject moveToThisPoint;
 
     public string nameToMove = "";
+    public string tagToRemove = "mo";
     //shows where the object should move
     public void OnPointerDown(PointerEventData eventData)
     {
@@ -47,15 +48,35 @@ public class moveHereScript : MonoBehaviour
     {
         //Destroy(OnjectToMove);
         //Instantiate(OnjectToMove, newPos, Quaternion.identity);
-        // Get the position of the clicked object (the object this script is attached to)
+
+
         Vector2 objectPosition = ObjectToMove.transform.position;
 
-        // Optionally, you can use the event data position if you need the position the user clicked on
-        // Vector3 objectPosition = eventData.position;
-
-        // Now move the object to the new position
         Destroy(ObjectToMove);
         Instantiate(ObjectToMove, objectPosition, Quaternion.identity);
+        Cleanup();
+    }
+
+    private void Cleanup()
+    {
+        // Find all GameObjects with the specified tag
+        GameObject[] objectsWithTag = GameObject.FindGameObjectsWithTag(tagToRemove);
+
+        // Loop through each object with the specified tag
+        foreach (GameObject obj in objectsWithTag)
+        {
+            // Convert the object's world position to the camera's viewport position
+            Vector3 viewportPosition = mainCamera.WorldToViewportPoint(obj.transform.position);
+
+            // Check if the object is within the camera's viewport
+            if (viewportPosition.x >= 0 && viewportPosition.x <= 1 &&
+                viewportPosition.y >= 0 && viewportPosition.y <= 1 &&
+                viewportPosition.z > 0)  // Check if the object is in front of the camera
+            {
+                // Destroy the object if it is within the camera's view
+                Destroy(obj);
+            }
+        }
     }
 
     

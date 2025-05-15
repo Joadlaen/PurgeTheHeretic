@@ -2,9 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using TMPro;
 
-public class changePhaseScript : MonoBehaviour
+public class changePhaseScript : MonoBehaviour, IPointerDownHandler
 {
+    public TextMeshProUGUI turnIndicate;
+    public TextMeshProUGUI phaseIndicate;
     public main mainScript;
     public void OnPointerDown(PointerEventData eventData)
     {
@@ -27,5 +30,9 @@ public class changePhaseScript : MonoBehaviour
                 mainScript.CurrentPhase = "movement";
             }
         }
+        Debug.Log(mainScript.CurrentPhase);
+        Debug.Log(mainScript.Turn);
+        turnIndicate.text = mainScript.Turn;
+        phaseIndicate.text = mainScript.CurrentPhase;
     }
 }

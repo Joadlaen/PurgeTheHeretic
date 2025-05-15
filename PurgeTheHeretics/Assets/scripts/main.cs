@@ -42,8 +42,6 @@ public class main : MonoBehaviour
     public string CurrentPhase = "Movement";
     public string Turn = "";
 
-    //        bool[,] blockedSquares = new bool[GRID_SIZE, GRID_SIZE];
-
 
 
     // Start is called before the first frame update

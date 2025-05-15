@@ -3,7 +3,15 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - volDown
+  - volUp
+  - EnTank
+  - EnSquad
+  - EnOb
+  - HomeTank
+  - HomeSquad
+  - HomeOb
   layers:
   - Default
   - TransparentFX
