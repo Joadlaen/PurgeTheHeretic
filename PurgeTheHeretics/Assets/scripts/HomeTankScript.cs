@@ -69,8 +69,17 @@ public class HomeTankScript : MonoBehaviour, IPointerDownHandler
             {
                 Vector2 position1 = new Vector2(homeTankMovement.x + (y * x * SPACING), homeTankMovement.y);
                 Vector2 position2 = new Vector2(homeTankMovement.x, homeTankMovement.y + (y * x * SPACING));
-                Instantiate(moveTint, position1, Quaternion.identity);
-                Instantiate(moveTint, position2, Quaternion.identity);
+
+                if (position1.x >= 0 - mainScript.centeringVariable)
+                {
+                    Instantiate(moveTint, position1, Quaternion.identity);
+                }
+                if (position2.y >= 0 - mainScript.centeringVariable)
+                {
+                    Instantiate(moveTint, position2, Quaternion.identity);
+                }
+                
+
             }
         }   
     }

@@ -62,8 +62,14 @@ public class HomeSquadScript : MonoBehaviour, IPointerDownHandler
             {
                 Vector2 position1 = new Vector2(homeSquadMovement.x + (y*x*SPACING) - centeringVariable, homeSquadMovement.y);
                 Vector2 position2 = new Vector2(homeSquadMovement.x, homeSquadMovement.y + (y*x * SPACING) - centeringVariable);
-                Instantiate(moveTint, position1, Quaternion.identity);
-                Instantiate(moveTint, position2, Quaternion.identity);
+                if (position1.x >= 0 - mainScript.centeringVariable)
+                {
+                    Instantiate(moveTint, position1, Quaternion.identity);
+                }
+                if (position2.y >= 0 - mainScript.centeringVariable)
+                {
+                    Instantiate(moveTint, position2, Quaternion.identity);
+                }
             }
         }
     }

@@ -3,14 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class moveHereScript : MonoBehaviour
+public class moveHereScript : MonoBehaviour, IPointerDownHandler
 {
     public HomeTankScript homeTankScript;
     public GameObject homeTank;
 
     public HomeSquadScript homeSquadScript;
     public GameObject homeSquad;
-
 
 
     public EnemyTankScript enemyTankScript;
@@ -20,12 +19,19 @@ public class moveHereScript : MonoBehaviour
     public GameObject enemySquad;
 
     public GameObject moveToThisPoint;
+    public Camera mainCamera;
 
     public string nameToMove = "";
-    public string tagToRemove = "mo";
+    public string tagToRemove = "MoveTint";
+
+    Vector2 newPos = new Vector2();
     //shows where the object should move
     public void OnPointerDown(PointerEventData eventData)
     {
+        newPos = mainCamera.ScreenToWorldPoint(eventData.position);
+        newPos = new Vector2 (newPos.x, newPos.y);
+
+        Debug.Log("Clicked position: " + newPos.x + ", " + newPos.y);
         if (nameToMove == "HomeTank")
         {
             MoveSprite(homeTank);
@@ -42,6 +48,7 @@ public class moveHereScript : MonoBehaviour
         {
             MoveSprite(enemyTank);
         }
+
     }
 
     private void MoveSprite(GameObject ObjectToMove)
@@ -49,15 +56,12 @@ public class moveHereScript : MonoBehaviour
         //Destroy(OnjectToMove);
         //Instantiate(OnjectToMove, newPos, Quaternion.identity);
 
-
-        Vector2 objectPosition = ObjectToMove.transform.position;
-
         Destroy(ObjectToMove);
-        Instantiate(ObjectToMove, objectPosition, Quaternion.identity);
+        Instantiate(ObjectToMove, newPos, Quaternion.identity);
         Cleanup();
     }
 
-    private void Cleanup()
+    public void Cleanup()
     {
         // Find all GameObjects with the specified tag
         GameObject[] objectsWithTag = GameObject.FindGameObjectsWithTag(tagToRemove);

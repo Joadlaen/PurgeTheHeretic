@@ -9,6 +9,8 @@ public class changePhaseScript : MonoBehaviour, IPointerDownHandler
     public TextMeshProUGUI turnIndicate;
     public TextMeshProUGUI phaseIndicate;
     public main mainScript;
+    public moveHereScript moveHereScript;
+    public shootThisScript shootThisScript;
     public void OnPointerDown(PointerEventData eventData)
     {
         Debug.Log(mainScript.CurrentPhase);
@@ -34,5 +36,7 @@ public class changePhaseScript : MonoBehaviour, IPointerDownHandler
         Debug.Log(mainScript.Turn);
         turnIndicate.text = mainScript.Turn;
         phaseIndicate.text = mainScript.CurrentPhase;
+        moveHereScript.Cleanup();
+        shootThisScript.Cleanup();
     }
 }

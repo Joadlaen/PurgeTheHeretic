@@ -1579,7 +1579,9 @@ MonoBehaviour:
   enemySquadScript: {fileID: 546885130}
   enemySquad: {fileID: 546885127}
   moveToThisPoint: {fileID: 533552753}
+  mainCamera: {fileID: 519420031}
   nameToMove: 
+  tagToRemove: mo
 --- !u!1 &546885127
 GameObject:
   m_ObjectHideFlags: 0
@@ -1765,6 +1767,8 @@ MonoBehaviour:
   turnIndicate: {fileID: 430457700}
   phaseIndicate: {fileID: 1765034434}
   mainScript: {fileID: 1242163254}
+  moveHereScript: {fileID: 0}
+  shootThisScript: {fileID: 0}
 --- !u!212 &551704119
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2883,6 +2887,7 @@ MonoBehaviour:
   enemySquad: {fileID: 546885127}
   shootPos: {fileID: 1626605251}
   nameShooting: 
+  mainCamera: {fileID: 0}
 --- !u!1 &1676691871
 GameObject:
   m_ObjectHideFlags: 0

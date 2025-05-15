@@ -63,8 +63,14 @@ public class EnemyTankScript : MonoBehaviour, IPointerDownHandler
             {
                 Vector2 position1 = new Vector2(enemyTankMovement.x + (y * x * SPACING) - centeringVariable, enemyTankMovement.y);
                 Vector2 position2 = new Vector2(enemyTankMovement.x, enemyTankMovement.y + (y * x * SPACING) - centeringVariable);
-                Instantiate(moveTint, position1, Quaternion.identity);
-                Instantiate(moveTint, position2, Quaternion.identity);
+                if (position1.x < mainScript.ROWS - mainScript.centeringVariable)
+                {
+                    Instantiate(moveTint, position1, Quaternion.identity);
+                }
+                if (position2.y < mainScript.COLUMNS - mainScript.centeringVariable)
+                {
+                    Instantiate(moveTint, position2, Quaternion.identity);
+                }
             }
         }
     }
