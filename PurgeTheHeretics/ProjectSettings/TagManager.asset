@@ -12,6 +12,9 @@ TagManager:
   - HomeTank
   - HomeSquad
   - HomeOb
+  - MoveTint
+  - ShootTint
+  - MovedTint
   layers:
   - Default
   - TransparentFX
