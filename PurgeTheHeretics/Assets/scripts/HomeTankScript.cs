@@ -56,7 +56,11 @@ public class HomeTankScript : MonoBehaviour, IPointerDownHandler
     public void moveDirectionGenerate()
     {
         while (!movedPiece)
-        { 
+        {
+            foreach (var item in transform)
+            {
+                Destroy();
+            }
             for (int x = -1; x < 2; x += 2)
             {
                 for (int y = 0; y <= MOVEMENT; y++)

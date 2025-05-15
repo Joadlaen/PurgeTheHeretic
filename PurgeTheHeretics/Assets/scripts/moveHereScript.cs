@@ -6,44 +6,47 @@ using UnityEngine.EventSystems;
 public class moveHereScript : MonoBehaviour
 {
     public HomeTankScript homeTankScript;
+    public GameObject homeTank;
 
     public HomeSquadScript homeSquadScript;
+    public GameObject homeSquad;
 
 
 
     public EnemyTankScript enemyTankScript;
+    public GameObject enemyTank;
 
     public EnemySquadScript enemySquadScript;
+    public GameObject enemySquad;
+
+    Vector2 newPos = new Vector2();
 
     public string nameToMove = "";
     //shows where the object should move
     public void OnPointerDown(PointerEventData eventData)
     {
-
-
-        Vector2 WorldPos = eventData.position;
-
-        MoveSprite(WorldPos);
+        if (nameToMove == "HomeTank")
+        {
+            MoveSprite(homeTank);
+        }
+        if (nameToMove == "HomeSquad")
+        {
+            MoveSprite(homeSquad);
+        }
+        if (nameToMove == "EnSquad")
+        {
+            MoveSprite(enemySquad);
+        }
+        if (nameToMove == "EnTank")
+        {
+            MoveSprite(enemyTank);
+        }
     }
 
-    private void MoveSprite(Vector2 newPos)
+    private void MoveSprite(GameObject OnjectToMove)
     {
-        if (gameObject.CompareTag("HomeSquad"))
-        {
-            homeSquadScript.transform.position = newPos;
-        }
-        else if (gameObject.CompareTag("HomeTank"))
-        {
-            homeTankScript.transform.position = newPos;
-        }
-        else if (gameObject.CompareTag("EnemySquad"))
-        {
-            enemySquadScript.transform.position = newPos;
-        }
-        else if (gameObject.CompareTag("EnemyTank"))
-        {
-            enemyTankScript.transform.position = newPos;
-        }
+        Destroy(OnjectToMove);
+        Instantiate(OnjectToMove, newPos, Quaternion.identity);
     }
 
     
