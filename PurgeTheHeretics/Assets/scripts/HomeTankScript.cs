@@ -25,7 +25,6 @@ public class HomeTankScript : MonoBehaviour, IPointerDownHandler
     const int RANGE = 6;
     const int MOVEMENT = 2;
     const int SPACING = 1;
-    const int centeringVariable = 0;
 
 
     public void Start()
@@ -41,51 +40,50 @@ public class HomeTankScript : MonoBehaviour, IPointerDownHandler
     {
         if (mainScript != null && mainScript.Turn == "Home")
         {
-            Debug.Log("EnemySquad");
+            Debug.Log("HomeTank");
             if (mainScript.CurrentPhase == "Movement")
             {
                 moveDirectionGenerate();
+                moverScript.nameToMove = "HomeTank";
+                Debug.Log(homeTankMovement.ToString());
             }
             if (mainScript.CurrentPhase == "Shooting")
             {
                 shootDirectionGenerate();
+                shooterScript.nameShooting = "HomeTank";
             }
         }
     }
 
     public void moveDirectionGenerate()
     {
-        while (!movedPiece)
+        
+        
+        //foreach (var item in transform)
+        //{
+        //    Destroy(item);
+        //}
+        for (int x = -1; x < 2; x += 2)
         {
-            foreach (var item in transform)
+            for (int y = 0; y <= MOVEMENT; y++)
             {
-                Destroy();
+                Vector2 position1 = new Vector2(homeTankMovement.x + (y * x * SPACING), homeTankMovement.y);
+                Vector2 position2 = new Vector2(homeTankMovement.x, homeTankMovement.y + (y * x * SPACING));
+                Instantiate(moveTint, position1, Quaternion.identity);
+                Instantiate(moveTint, position2, Quaternion.identity);
             }
-            for (int x = -1; x < 2; x += 2)
-            {
-                for (int y = 0; y <= MOVEMENT; y++)
-                {
-                    Vector2 position1 = new Vector2(homeTankMovement.x + (y * x * SPACING) - centeringVariable, homeTankMovement.y);
-                    Vector2 position2 = new Vector2(homeTankMovement.x, homeTankMovement.y + (y * x * SPACING) - centeringVariable);
-                    Instantiate(moveTint, position1, Quaternion.identity);
-                    Instantiate(moveTint, position2, Quaternion.identity);
-                }
-            }
-        }
+        }   
     }
     public void shootDirectionGenerate()
     {
-        while (!movedPiece)
+        for (int x = -1; x < 2; x += 2)
         {
-            for (int x = -1; x < 2; x += 2)
+            for (int y = 1; y < RANGE; y++)
             {
-                for (int y = 1; y < MOVEMENT; y++)
-                {
-                    Vector2 position1 = new Vector2(y * x * SPACING - centeringVariable, 0);
-                    Vector2 position2 = new Vector2(0, y * x * SPACING - centeringVariable);
-                    Instantiate(moveTint, position1, Quaternion.identity);
-                    Instantiate(moveTint, position2, Quaternion.identity);
-                }
+                Vector2 position1 = new Vector2(y * x * SPACING, 0);
+                Vector2 position2 = new Vector2(0, y * x * SPACING);
+                Instantiate(shootTint, position1, Quaternion.identity);
+                Instantiate(shootTint, position2, Quaternion.identity);
             }
         }
     }

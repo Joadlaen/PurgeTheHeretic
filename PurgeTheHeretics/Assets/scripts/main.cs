@@ -69,19 +69,19 @@ public class main : MonoBehaviour
     {
         if (enemySquadScript.enabled == true) 
         {
-            gridTracker[(int)enemySquadScript.enemySquadMovement.x, (int)enemySquadScript.enemySquadMovement.y] = "EnSquad";
+            gridTracker[(int)enemySquadScript.enemySquadMovement.x + centeringVariable, (int)enemySquadScript.enemySquadMovement.y + centeringVariable] = "EnSquad";
         }
         if (homeSquadScript.enabled == true)
         {
-            gridTracker[(int)homeSquadScript.homeSquadMovement.x, (int)homeSquadScript.homeSquadMovement.y] = "HomeSquad";
+            gridTracker[(int)homeSquadScript.homeSquadMovement.x + centeringVariable, (int)homeSquadScript.homeSquadMovement.y + centeringVariable] = "HomeSquad";
         }
         if (homeTankScript.enabled == true)
         {
-            gridTracker[(int)homeTankScript.homeTankMovement.x, (int)homeTankScript.homeTankMovement.y] = "HomeTank";
+            gridTracker[(int)homeTankScript.homeTankMovement.x + centeringVariable, (int)homeTankScript.homeTankMovement.y + centeringVariable] = "HomeTank";
         }
         if (enemyTankScript.enabled == true)
         { 
-            gridTracker[(int)enemyTankScript.enemyTankMovement.x, (int)enemyTankScript.enemyTankMovement.y] = "EnTank";
+            gridTracker[(int)enemyTankScript.enemyTankMovement.x + centeringVariable, (int)enemyTankScript.enemyTankMovement.y + centeringVariable] = "EnTank";
         }
     }
 

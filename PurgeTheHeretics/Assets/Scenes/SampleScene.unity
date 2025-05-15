@@ -264,7 +264,6 @@ GameObject:
   - component: {fileID: 111725931}
   - component: {fileID: 111725932}
   - component: {fileID: 111725933}
-  - component: {fileID: 111725934}
   m_Layer: 0
   m_Name: enemyTankDeploy
   m_TagString: Untagged
@@ -357,8 +356,8 @@ MonoBehaviour:
   enemySquad: {fileID: 111725929}
   movedPiece: 0
   mainScript: {fileID: 1242163254}
-  moverScript: {fileID: 0}
-  shooterScript: {fileID: 0}
+  moverScript: {fileID: 533552757}
+  shooterScript: {fileID: 1626605255}
 --- !u!61 &111725933
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -404,33 +403,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!50 &111725934
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 111725929}
-  m_BodyType: 0
-  m_Simulated: 0
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 0.0001
-  m_LinearDrag: 0
-  m_AngularDrag: 0
-  m_GravityScale: 0
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
 --- !u!1 &157332658
 GameObject:
   m_ObjectHideFlags: 0
@@ -587,7 +559,6 @@ GameObject:
   - component: {fileID: 187509420}
   - component: {fileID: 187509421}
   - component: {fileID: 187509422}
-  - component: {fileID: 187509423}
   m_Layer: 0
   m_Name: homeDeploySquad
   m_TagString: Untagged
@@ -727,33 +698,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!50 &187509423
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 187509418}
-  m_BodyType: 0
-  m_Simulated: 0
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 0.0001
-  m_LinearDrag: 0
-  m_AngularDrag: 0
-  m_GravityScale: 0
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
 --- !u!1 &227091519
 GameObject:
   m_ObjectHideFlags: 0
@@ -911,7 +855,6 @@ GameObject:
   - component: {fileID: 257196198}
   - component: {fileID: 257196199}
   - component: {fileID: 257196200}
-  - component: {fileID: 257196201}
   m_Layer: 0
   m_Name: homeTankDeploy
   m_TagString: Untagged
@@ -1051,33 +994,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!50 &257196201
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 257196196}
-  m_BodyType: 0
-  m_Simulated: 0
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 0.0001
-  m_LinearDrag: 0
-  m_AngularDrag: 0
-  m_GravityScale: 0
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
 --- !u!1 &462903327
 GameObject:
   m_ObjectHideFlags: 0
@@ -1519,9 +1435,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   homeTankScript: {fileID: 257196199}
+  homeTank: {fileID: 257196196}
   homeSquadScript: {fileID: 187509421}
+  homeSquad: {fileID: 187509418}
   enemyTankScript: {fileID: 111725932}
+  enemyTank: {fileID: 111725929}
   enemySquadScript: {fileID: 546885130}
+  enemySquad: {fileID: 546885127}
+  moveToThisPoint: {fileID: 533552753}
   nameToMove: 
 --- !u!1 &546885127
 GameObject:
@@ -1535,7 +1456,6 @@ GameObject:
   - component: {fileID: 546885129}
   - component: {fileID: 546885130}
   - component: {fileID: 546885131}
-  - component: {fileID: 546885132}
   m_Layer: 0
   m_Name: enemyDeploySquad
   m_TagString: Untagged
@@ -1628,8 +1548,8 @@ MonoBehaviour:
   enemySquad: {fileID: 546885127}
   movedPiece: 0
   mainScript: {fileID: 1242163254}
-  moverScript: {fileID: 0}
-  shooterScript: {fileID: 0}
+  moverScript: {fileID: 533552757}
+  shooterScript: {fileID: 1626605255}
 --- !u!61 &546885131
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1675,33 +1595,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!50 &546885132
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 546885127}
-  m_BodyType: 0
-  m_Simulated: 0
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 0.0001
-  m_LinearDrag: 0
-  m_AngularDrag: 0
-  m_GravityScale: 0
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
 --- !u!1 &612854465
 GameObject:
   m_ObjectHideFlags: 0
@@ -1937,8 +1830,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1242163253}
   - component: {fileID: 1242163254}
-  - component: {fileID: 1242163256}
-  - component: {fileID: 1242163255}
   m_Layer: 0
   m_Name: GridManager
   m_TagString: Untagged
@@ -2002,41 +1893,6 @@ MonoBehaviour:
   centeringVariable: 3
   CurrentPhase: Movement
   Turn: Enemy
---- !u!114 &1242163255
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1242163251}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8379cca4d9b416c45a711179a75dbec7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  homeTankScript: {fileID: 257196199}
-  homeSquadScript: {fileID: 187509421}
-  enemyTankScript: {fileID: 111725932}
-  enemySquadScript: {fileID: 546885130}
-  nameToMove: 
---- !u!114 &1242163256
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1242163251}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 142946f0895b23f46aab53e297540c94, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  homeTank: {fileID: 257196196}
-  enemyTank: {fileID: 111725929}
-  homeSquad: {fileID: 187509418}
-  enemySquad: {fileID: 546885127}
-  shootPos: {fileID: 1626605251}
-  nameShooting: 
 --- !u!1 &1502443721
 GameObject:
   m_ObjectHideFlags: 0

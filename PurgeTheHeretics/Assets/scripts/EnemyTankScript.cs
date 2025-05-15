@@ -45,6 +45,7 @@ public class EnemyTankScript : MonoBehaviour, IPointerDownHandler
             {
                 moveDirectionGenerate();
                 moverScript.nameToMove = "EnTank";
+                Debug.Log(enemyTankMovement.ToString());
             }
             if (mainScript.CurrentPhase == "Shooting")
             {
@@ -71,10 +72,10 @@ public class EnemyTankScript : MonoBehaviour, IPointerDownHandler
     {
         for (int x = -1; x < 2; x += 2)
         {
-            for (int y = 1; y <= RANGE; y++)
+            for (int y = 1; y < RANGE; y++)
             {
-                Vector2 position1 = new Vector2(enemyTankMovement.x + (y * x * SPACING) - centeringVariable, enemyTankMovement.y);
-                Vector2 position2 = new Vector2(enemyTankMovement.x, enemyTankMovement.y + (y * x * SPACING) - centeringVariable);
+                Vector2 position1 = new Vector2(y * x * SPACING, 0);
+                Vector2 position2 = new Vector2(0, y * x * SPACING);
                 Instantiate(shootTint, position1, Quaternion.identity);
                 Instantiate(shootTint, position2, Quaternion.identity);
             }

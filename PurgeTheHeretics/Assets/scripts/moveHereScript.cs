@@ -19,7 +19,7 @@ public class moveHereScript : MonoBehaviour
     public EnemySquadScript enemySquadScript;
     public GameObject enemySquad;
 
-    Vector2 newPos = new Vector2();
+    public GameObject moveToThisPoint;
 
     public string nameToMove = "";
     //shows where the object should move
@@ -43,10 +43,19 @@ public class moveHereScript : MonoBehaviour
         }
     }
 
-    private void MoveSprite(GameObject OnjectToMove)
+    private void MoveSprite(GameObject ObjectToMove)
     {
-        Destroy(OnjectToMove);
-        Instantiate(OnjectToMove, newPos, Quaternion.identity);
+        //Destroy(OnjectToMove);
+        //Instantiate(OnjectToMove, newPos, Quaternion.identity);
+        // Get the position of the clicked object (the object this script is attached to)
+        Vector2 objectPosition = ObjectToMove.transform.position;
+
+        // Optionally, you can use the event data position if you need the position the user clicked on
+        // Vector3 objectPosition = eventData.position;
+
+        // Now move the object to the new position
+        Destroy(ObjectToMove);
+        Instantiate(ObjectToMove, objectPosition, Quaternion.identity);
     }
 
     

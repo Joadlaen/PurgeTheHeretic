@@ -14,10 +14,4 @@ public class TurnDecider : MonoBehaviour
         turnDecider = D6.Next(1,7);
         Debug.Log(turnDecider);
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }
