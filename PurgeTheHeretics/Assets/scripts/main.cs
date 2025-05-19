@@ -3,16 +3,17 @@ using System.Collections.Generic;
 using System.Security.Cryptography.X509Certificates;
 using JetBrains.Annotations;
 using Unity.VisualScripting;
+using UnityEditor;
 using UnityEngine;
 
 public class main : MonoBehaviour
 {
     public string[,] gridTracker;
 
-    public Vector2 enemySquadPos;
-    public Vector2 enemyTankPos;
-    public Vector2 homeSquadPos;
-    public Vector2 homeTankPos;
+    public Vector3 enemySquadPos;
+    public Vector3 enemyTankPos;
+    public Vector3 homeSquadPos;
+    public Vector3 homeTankPos;
 
     public GameObject battleFieldSprite;
     public GameObject battleFieldCover;
@@ -88,30 +89,36 @@ public class main : MonoBehaviour
         {
             for (int j = 0; j < COLUMNS; j++)
             {
-                Vector2 position = new Vector2(j * SPACING - centeringVariable, i * SPACING - centeringVariable);
+                Vector3 position = new Vector3(j * SPACING - centeringVariable, i * SPACING - centeringVariable, 2f);
                 Instantiate(battleFieldSprite, position, Quaternion.identity);
             }
         }
-        Vector2 enemyObjectivePos = new Vector2(enemyObjectPositionCol * SPACING - SPACING - centeringVariable, enemyObjectPositionRow * SPACING - SPACING - centeringVariable);
-        Instantiate(enemyObjective, enemyObjectivePos, Quaternion.identity);
+        Vector3 enemyObjectivePos = new Vector3(enemyObjectPositionCol * SPACING - SPACING - centeringVariable, enemyObjectPositionRow * SPACING - SPACING - centeringVariable, 1f);
+        Teleport(enemyObjective, enemyObjectivePos, Quaternion.identity);
 
-        Vector2 homeObjectivePos = new Vector2(homeObjectPositionCol * SPACING - centeringVariable, homeObjectPositionRow * SPACING - centeringVariable);
-        Instantiate(homeObjective, homeObjectivePos, Quaternion.identity);
+        Vector3 homeObjectivePos = new Vector3(homeObjectPositionCol * SPACING - centeringVariable, homeObjectPositionRow * SPACING - centeringVariable, 1f);
+        Teleport(homeObjective, homeObjectivePos, Quaternion.identity);
 
-        enemySquadPos = new Vector2(enemyObjectPositionCol * SPACING - (SPACING*2) - centeringVariable, enemyObjectPositionRow * SPACING - SPACING - centeringVariable);
-        Instantiate(EnemySquadDeploy, enemySquadPos, Quaternion.identity);
+        enemySquadPos = new Vector3(enemyObjectPositionCol * SPACING - (SPACING*2) - centeringVariable, enemyObjectPositionRow * SPACING - SPACING - centeringVariable, 1f);
+        Teleport(EnemySquadDeploy, enemySquadPos, Quaternion.identity);
 
-        homeSquadPos = new Vector2(homeObjectPositionCol * SPACING - centeringVariable, homeObjectPositionRow * SPACING - centeringVariable + SPACING);
-        Instantiate(homeSquadDeploy, homeSquadPos, Quaternion.identity);
+        homeSquadPos = new Vector3(homeObjectPositionCol * SPACING - centeringVariable, homeObjectPositionRow * SPACING - centeringVariable + SPACING, 1f);
+        Teleport(homeSquadDeploy, homeSquadPos, Quaternion.identity);
 
-        enemyTankPos = new Vector2(enemyObjectPositionCol * SPACING - SPACING - centeringVariable, enemyObjectPositionRow * SPACING - SPACING - centeringVariable - SPACING);
-        Instantiate(EnemyTankDeploy, enemyTankPos, Quaternion.identity);
+        enemyTankPos = new Vector3(enemyObjectPositionCol * SPACING - SPACING - centeringVariable, enemyObjectPositionRow * SPACING - SPACING - centeringVariable - SPACING, 1f);
+        Teleport(EnemyTankDeploy, enemyTankPos, Quaternion.identity);
 
-        homeTankPos = new Vector2(homeObjectPositionCol * SPACING + SPACING - centeringVariable, homeObjectPositionRow * SPACING - centeringVariable);
-        Instantiate(homeTankDeploy, homeTankPos, Quaternion.identity);
+        homeTankPos = new Vector3(homeObjectPositionCol * SPACING + SPACING - centeringVariable, homeObjectPositionRow * SPACING - centeringVariable, 1f);
+        Teleport(homeTankDeploy, homeTankPos, Quaternion.identity);
     }
-
+    private void Teleport(GameObject ObjectToMove, Vector2 targetPosition, Quaternion rotation)
+    {
+        Debug.Log(ObjectToMove.name + targetPosition.ToString() + rotation.ToString());
+        ObjectToMove.transform.position = targetPosition;
+        ObjectToMove.transform.rotation = rotation;
+    }
 }
+
 public class Stats: MonoBehaviour
 {
     public string pieceName = "";

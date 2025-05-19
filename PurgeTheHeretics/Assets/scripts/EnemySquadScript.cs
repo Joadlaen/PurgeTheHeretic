@@ -12,7 +12,9 @@ public class EnemySquadScript : MonoBehaviour, IPointerDownHandler
     public GameObject moveTint;
     public GameObject shootTint;
     public GameObject enemySquad;
+    public GameObject MovedTint;
     public bool movedPiece = false;
+    public bool shotPiece = false;
 
     public main mainScript;
     public moveHereScript moverScript;
@@ -38,13 +40,13 @@ public class EnemySquadScript : MonoBehaviour, IPointerDownHandler
         if (mainScript != null && mainScript.Turn == "Enemy")
         { 
             Debug.Log("EnemySquad");
-            if (mainScript.CurrentPhase == "Movement")
+            if (mainScript.CurrentPhase == "Movement" && ! movedPiece)
             {
                 moveDirectionGenerate();
                 moverScript.UpdateNameToMove("EnSquad");
                 Debug.Log(enemySquadMovement.ToString());
             }
-            if (mainScript.CurrentPhase == "Shooting")
+            if (mainScript.CurrentPhase == "Shooting" && ! shotPiece)
             {
                 shootDirectionGenerate();
                 shooterScript.nameShooting = "EnSquad";
@@ -62,14 +64,47 @@ public class EnemySquadScript : MonoBehaviour, IPointerDownHandler
                 Vector2 position2 = new Vector2(enemySquadMovement.x, enemySquadMovement.y + (y * x * SPACING) - centeringVariable);
                 if (position1.x < mainScript.ROWS - mainScript.centeringVariable)
                 {
-                    Instantiate(moveTint, position1, Quaternion.identity);
+                    GameObject move = Instantiate(moveTint, position1, Quaternion.identity);
+                    move.GetComponent<moveHereScript>().UpdateNameToMove("EnSquad");
                 }
                 if (position2.y < mainScript.COLUMNS - mainScript.centeringVariable)
                 {
-                    Instantiate(moveTint, position2, Quaternion.identity);
+                    GameObject move = Instantiate(moveTint, position2, Quaternion.identity);
+                    move.GetComponent<moveHereScript>().UpdateNameToMove("EnSquad");
                 }
             }
         }
+        //Vector2 MoveNorth = new Vector2(enemySquadMovement.x, enemySquadMovement.y + 1);
+        //if (MoveNorth.y < mainScript.ROWS)
+        //{
+        //    GameObject move = Instantiate(moveTint, MoveNorth, Quaternion.identity);
+        //    move.GetComponent<moveHereScript>().UpdateNameToMove("EnSquad");
+        //}
+        //Vector2 MoveSouth = new Vector2(enemySquadMovement.x, enemySquadMovement.y - 1);
+        //if (MoveSouth.y >= 0)
+        //{
+        //    GameObject move = Instantiate(moveTint, MoveSouth, Quaternion.identity);
+        //    move.GetComponent<moveHereScript>().UpdateNameToMove("EnSquad");
+        //}
+        //Vector2 MoveEast = new Vector2(enemySquadMovement.x + 1, enemySquadMovement.y);
+        //if (MoveEast.x < mainScript.COLUMNS)
+        //{
+        //    GameObject move = Instantiate(moveTint, MoveEast, Quaternion.identity);
+        //    move.GetComponent<moveHereScript>().UpdateNameToMove("EnSquad");
+        //}
+        //Vector2 MoveWest = new Vector2(enemySquadMovement.x - 1, enemySquadMovement.y);
+        //if (MoveWest.x >= 0)
+        //{
+        //    GameObject move = Instantiate(moveTint, MoveWest, Quaternion.identity);
+        //    move.GetComponent<moveHereScript>().UpdateNameToMove("EnSquad");
+        //}
+    }
+    public void UpdateEnemySquadPosition(Vector2 newPosition)
+    {
+        Debug.Log("tank pos update");
+        enemySquadMovement = newPosition;
+        Instantiate(MovedTint, newPosition, Quaternion.identity);
+        movedPiece = true;
     }
     public void shootDirectionGenerate()
     {
@@ -77,10 +112,18 @@ public class EnemySquadScript : MonoBehaviour, IPointerDownHandler
         {
             for (int y = 1; y < RANGE; y++)
             {
-                Vector2 position1 = new Vector2(y * x * SPACING, 0);
-                Vector2 position2 = new Vector2(0, y * x * SPACING);
-                Instantiate(shootTint, position1, Quaternion.identity);
-                Instantiate(shootTint, position2, Quaternion.identity);
+                Vector2 position1 = new Vector2(enemySquadMovement.x + (y * x * SPACING) - centeringVariable, enemySquadMovement.y);
+                Vector2 position2 = new Vector2(enemySquadMovement.x, enemySquadMovement.y + (y * x * SPACING) - centeringVariable);
+                if (position1.x < mainScript.ROWS - mainScript.centeringVariable)
+                {
+                    GameObject shoot = Instantiate(shootTint, position1, Quaternion.identity);
+                    shoot.GetComponent<shootThisScript>().UpdateNameShooting("EnSquad");
+                }
+                if (position2.y < mainScript.COLUMNS - mainScript.centeringVariable)
+                {
+                    GameObject shoot = Instantiate(shootTint, position2, Quaternion.identity);
+                    shoot.GetComponent<shootThisScript>().UpdateNameShooting("EnSquad");
+                }
             }
         }
     }

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -16,13 +17,15 @@ public class HomeTankScript : MonoBehaviour, IPointerDownHandler
     public GameObject moveTint;
     public GameObject shootTint;
     public GameObject enemySquad;
+    public GameObject MovedTint;
     public bool movedPiece = false;
+    public bool shotPiece = false;
 
     public main mainScript;
     public moveHereScript moverScript;
     public shootThisScript shooterScript;
 
-    const int RANGE = 6;
+    const int RANGE = 10;
     const int MOVEMENT = 2;
     const int SPACING = 1;
 
@@ -41,13 +44,13 @@ public class HomeTankScript : MonoBehaviour, IPointerDownHandler
         if (mainScript != null && mainScript.Turn == "Home")
         {
             Debug.Log("HomeTank");
-            if (mainScript.CurrentPhase == "Movement")
+            if (mainScript.CurrentPhase == "Movement" && ! movedPiece)
             {
                 moveDirectionGenerate();
                 moverScript.UpdateNameToMove("HomeTank");
                 Debug.Log(homeTankMovement.ToString());
             }
-            if (mainScript.CurrentPhase == "Shooting")
+            if (mainScript.CurrentPhase == "Shooting" && ! shotPiece)
             {
                 shootDirectionGenerate();
                 shooterScript.nameShooting = "HomeTank";
@@ -57,42 +60,87 @@ public class HomeTankScript : MonoBehaviour, IPointerDownHandler
 
     public void moveDirectionGenerate()
     {
-        
-        
+
+
         //foreach (var item in transform)
         //{
         //    Destroy(item);
         //}
         for (int x = -1; x < 2; x += 2)
         {
-            for (int y = 0; y <= MOVEMENT; y++)
+            for (int y = 1; y <= MOVEMENT; y++)
             {
                 Vector2 position1 = new Vector2(homeTankMovement.x + (y * x * SPACING), homeTankMovement.y);
                 Vector2 position2 = new Vector2(homeTankMovement.x, homeTankMovement.y + (y * x * SPACING));
-
+        
                 if (position1.x >= 0 - mainScript.centeringVariable)
                 {
-                    Instantiate(moveTint, position1, Quaternion.identity);
+                    GameObject move = Instantiate(moveTint, position1, Quaternion.identity);
+                    move.GetComponent<moveHereScript>().UpdateNameToMove("HomeTank");
                 }
                 if (position2.y >= 0 - mainScript.centeringVariable)
                 {
-                    Instantiate(moveTint, position2, Quaternion.identity);
+                    GameObject move = Instantiate(moveTint, position2, Quaternion.identity);
+                    move.GetComponent<moveHereScript>().UpdateNameToMove("HomeTank");
                 }
-                
+
 
             }
-        }   
+        }
+        //Vector2 MoveNorth = new Vector2(homeTankMovement.x, homeTankMovement.y + 1);
+        //if (MoveNorth.y < mainScript.ROWS) 
+        //{
+        //    GameObject move = Instantiate(moveTint, MoveNorth, Quaternion.identity);
+        //    move.GetComponent<moveHereScript>().UpdateNameToMove("HomeTank");
+        //}
+        //Vector2 MoveSouth = new Vector2(homeTankMovement.x, homeTankMovement.y - 1);
+        //if (MoveSouth.y >= 0)
+        //{
+        //    GameObject move = Instantiate(moveTint, MoveSouth, Quaternion.identity);
+        //    move.GetComponent<moveHereScript>().UpdateNameToMove("HomeTank");
+        //}
+        //Vector2 MoveEast = new Vector2(homeTankMovement.x + 1, homeTankMovement.y);
+        //if (MoveEast.x < mainScript.COLUMNS)
+        //{
+        //    GameObject move = Instantiate(moveTint, MoveEast, Quaternion.identity);
+        //    move.GetComponent<moveHereScript>().UpdateNameToMove("HomeTank");
+        //}
+        //Vector2 MoveWest = new Vector2(homeTankMovement.x - 1, homeTankMovement.y);
+        //if (MoveWest.x >= 0)
+        //{
+        //    GameObject move = Instantiate(moveTint, MoveWest, Quaternion.identity);
+        //    move.GetComponent<moveHereScript>().UpdateNameToMove("Home");
+        //}
     }
+    public void UpdateHomeTankPosition(Vector2 newPosition)
+    {
+        Debug.Log("tank pos update to " + newPosition);
+        homeTankMovement.x = newPosition.x;
+        homeTankMovement.y = newPosition.y;
+        Debug.Log("new tank pos " + homeTankMovement);
+        Instantiate(MovedTint, newPosition, Quaternion.identity);
+        //movedPiece = true;
+    }
+
     public void shootDirectionGenerate()
     {
         for (int x = -1; x < 2; x += 2)
         {
             for (int y = 1; y < RANGE; y++)
             {
-                Vector2 position1 = new Vector2(y * x * SPACING, 0);
-                Vector2 position2 = new Vector2(0, y * x * SPACING);
-                Instantiate(shootTint, position1, Quaternion.identity);
-                Instantiate(shootTint, position2, Quaternion.identity);
+                Vector2 position1 = new Vector2(homeTankMovement.x + (y * x * SPACING), homeTankMovement.y);
+                Vector2 position2 = new Vector2(homeTankMovement.x, homeTankMovement.y + (y * x * SPACING));
+
+                if (position1.x >= 0 - mainScript.centeringVariable)
+                {
+                    GameObject shoot = Instantiate(shootTint, position1, Quaternion.identity);
+                    shoot.GetComponent<shootThisScript>().UpdateNameShooting("HomeTank");
+                }
+                if (position2.y >= 0 - mainScript.centeringVariable)
+                {
+                    GameObject shoot = Instantiate(shootTint, position2, Quaternion.identity);
+                    shoot.GetComponent<shootThisScript>().UpdateNameShooting("HomeTank");
+                }
             }
         }
     }
@@ -100,5 +148,8 @@ public class HomeTankScript : MonoBehaviour, IPointerDownHandler
 
 public class HomeTankStats : Stats
 {
-
+    public HomeTankStats(string pieceName) 
+    { 
+            
+    }
 }

@@ -6,9 +6,10 @@ using UnityEngine.EventSystems;
 public class turnPassScript : MonoBehaviour, IPointerDownHandler
 {
     public main mainScript;
+    public changePhaseScript changePhaseScript;
     public void OnPointerDown(PointerEventData eventData)
     {
-
+        changePhaseScript.RestOfIt();
 
         if (mainScript.Turn == "Home")
         {
@@ -19,5 +20,11 @@ public class turnPassScript : MonoBehaviour, IPointerDownHandler
             mainScript.Turn = "Home";
         }
         Debug.Log(mainScript.gridTracker);
+
+        if (mainScript.CurrentPhase == "Shooting")
+        {
+            mainScript.CurrentPhase = "Movement";
+        }
     }
+
 }
