@@ -44,7 +44,7 @@ public class HomeTankScript : MonoBehaviour, IPointerDownHandler
             if (mainScript.CurrentPhase == "Movement")
             {
                 moveDirectionGenerate();
-                moverScript.nameToMove = "HomeTank";
+                moverScript.UpdateNameToMove("HomeTank");
                 Debug.Log(homeTankMovement.ToString());
             }
             if (mainScript.CurrentPhase == "Shooting")

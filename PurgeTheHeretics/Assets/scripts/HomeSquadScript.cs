@@ -43,7 +43,7 @@ public class HomeSquadScript : MonoBehaviour, IPointerDownHandler
             if (mainScript.CurrentPhase == "Movement")
             {
                 moveDirectionGenerate();
-                moverScript.nameToMove = "HomeSquad";
+                moverScript.UpdateNameToMove("HomeSquad");
                 Debug.Log(homeSquadMovement.ToString());
             }
             if (mainScript.CurrentPhase == "Shooting")

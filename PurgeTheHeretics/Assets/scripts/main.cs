@@ -37,7 +37,6 @@ public class main : MonoBehaviour
     public int enemyObjectPositionCol = 7;
     public int homeObjectPositionRow = 0;
     public int homeObjectPositionCol = 0;
-    public int homeSquadStrength = 6;
     public int centeringVariable = 3;
     public string CurrentPhase = "Movement";
     public string Turn = "";
@@ -65,19 +64,19 @@ public class main : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (enemySquadScript.enabled == true) 
+        if (enemySquadScript.enabled != null) 
         {
             gridTracker[(int)enemySquadScript.enemySquadMovement.x + centeringVariable, (int)enemySquadScript.enemySquadMovement.y + centeringVariable] = "EnSquad";
         }
-        if (homeSquadScript.enabled == true)
+        if (homeSquadScript.enabled != null)
         {
             gridTracker[(int)homeSquadScript.homeSquadMovement.x + centeringVariable, (int)homeSquadScript.homeSquadMovement.y + centeringVariable] = "HomeSquad";
         }
-        if (homeTankScript.enabled == true)
+        if (homeTankScript.enabled != null)
         {
             gridTracker[(int)homeTankScript.homeTankMovement.x + centeringVariable, (int)homeTankScript.homeTankMovement.y + centeringVariable] = "HomeTank";
         }
-        if (enemyTankScript.enabled == true)
+        if (enemyTankScript.enabled != null)
         { 
             gridTracker[(int)enemyTankScript.enemyTankMovement.x + centeringVariable, (int)enemyTankScript.enemyTankMovement.y + centeringVariable] = "EnTank";
         }

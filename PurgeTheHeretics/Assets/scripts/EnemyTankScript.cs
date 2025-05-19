@@ -44,7 +44,7 @@ public class EnemyTankScript : MonoBehaviour, IPointerDownHandler
             if (mainScript.CurrentPhase == "Movement")
             {
                 moveDirectionGenerate();
-                moverScript.nameToMove = "EnTank";
+                moverScript.UpdateNameToMove("EnTank");
                 Debug.Log(enemyTankMovement.ToString());
             }
             if (mainScript.CurrentPhase == "Shooting")

@@ -1,19 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class HomeObjectiveScript : MonoBehaviour
 {
     public void OnTriggerEnter2D(Collider2D other)
     {
-        //if (collision.gameObject.tag == "EnemySquad" || collision.gameObject.tag == "EnemyTank")
-        //{
-
-        //}
         if (Vector3.Distance(transform.position, other.transform.position) < 0.1f)
         {
-            Debug.Log("Object with tag " + other.tag + " is in the same position!");
-            // Your logic here
+            Debug.Log(other.tag);
+            if (other.tag == "EnTank" || other.tag == "EnSquad")
+            {
+                SceneManager.LoadScene("EnemyWins");
+            }
         }
     }
 }

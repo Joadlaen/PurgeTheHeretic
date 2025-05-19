@@ -41,7 +41,7 @@ public class EnemySquadScript : MonoBehaviour, IPointerDownHandler
             if (mainScript.CurrentPhase == "Movement")
             {
                 moveDirectionGenerate();
-                moverScript.nameToMove = "EnSquad";
+                moverScript.UpdateNameToMove("EnSquad");
                 Debug.Log(enemySquadMovement.ToString());
             }
             if (mainScript.CurrentPhase == "Shooting")

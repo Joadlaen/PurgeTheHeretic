@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -26,12 +27,22 @@ public class moveHereScript : MonoBehaviour, IPointerDownHandler
 
     Vector2 newPos = new Vector2();
     //shows where the object should move
+    void Start()
+    {
+        Debug.Log(nameToMove);
+    }
+
+    public void UpdateNameToMove(string name)
+    {
+        nameToMove = name;
+    }
     public void OnPointerDown(PointerEventData eventData)
     {
         newPos = mainCamera.ScreenToWorldPoint(eventData.position);
         newPos = new Vector2 (newPos.x, newPos.y);
 
         Debug.Log("Clicked position: " + newPos.x + ", " + newPos.y);
+        Debug.Log(nameToMove);
         if (nameToMove == "HomeTank")
         {
             MoveSprite(homeTank);
@@ -53,12 +64,15 @@ public class moveHereScript : MonoBehaviour, IPointerDownHandler
 
     private void MoveSprite(GameObject ObjectToMove)
     {
-        //Destroy(OnjectToMove);
-        //Instantiate(OnjectToMove, newPos, Quaternion.identity);
-
-        Destroy(ObjectToMove);
-        Instantiate(ObjectToMove, newPos, Quaternion.identity);
+        Debug.Log(ObjectToMove.name);
+        teleport(ObjectToMove, newPos, Quaternion.identity);
         Cleanup();
+    }
+    private void teleport(GameObject ObjectToMove, Vector2 targetPosition, Quaternion rotation)
+    {
+        Debug.Log(ObjectToMove.name + targetPosition.ToString() + rotation.ToString());
+        ObjectToMove.transform.position = targetPosition;
+        ObjectToMove.transform.rotation = rotation;
     }
 
     public void Cleanup()
