@@ -133,5 +133,13 @@ public class HomeSquadScript : MonoBehaviour, IPointerDownHandler
 }
 public class HomeSquadStats : Stats
 {
-
+    public void Initialize(string pieceName)
+    {
+        this.pieceName = pieceName;
+        attacks = 12;
+        accuracy = 3;
+        wounding = 5;
+        damage = 1;
+        wounds = 6;
+    }
 }

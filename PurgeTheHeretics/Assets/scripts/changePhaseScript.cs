@@ -41,10 +41,6 @@ public class changePhaseScript : MonoBehaviour, IPointerDownHandler
         }
         Debug.Log(mainScript.CurrentPhase);
         Debug.Log(mainScript.Turn);
-        RestOfIt();
-    }
-    public void RestOfIt()
-    {
         Debug.Log(mainScript.CurrentPhase);
         if (mainScript.CurrentPhase == "Movement")
         {

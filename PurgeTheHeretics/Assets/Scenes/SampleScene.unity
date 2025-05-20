@@ -1188,6 +1188,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57f24024d46ffa54a9011f4228222fca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  turnIndicate: {fileID: 430457700}
+  phaseIndicate: {fileID: 1765034434}
   mainScript: {fileID: 1242163254}
   changePhaseScript: {fileID: 551704118}
 --- !u!1 &257196196
@@ -1289,7 +1291,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73d6ff34f0ac2ea498eb1ff650520994, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  homeTankMovement: {x: 0, y: 0}
+  homeTankMovement: {x: 0, y: 0, z: 0}
   moveTint: {fileID: 533552753}
   shootTint: {fileID: 1626605251}
   enemySquad: {fileID: 257196196}
@@ -1633,11 +1635,8 @@ GameObject:
   m_Component:
   - component: {fileID: 519420032}
   - component: {fileID: 519420031}
-  - component: {fileID: 519420029}
   - component: {fileID: 519420030}
   - component: {fileID: 519420033}
-  - component: {fileID: 519420035}
-  - component: {fileID: 519420034}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1645,14 +1644,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!81 &519420029
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 519420028}
-  m_Enabled: 1
 --- !u!114 &519420030
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1779,115 +1770,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4294967295
   m_MaxRayIntersections: 0
---- !u!114 &519420034
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 519420028}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: be6d20940d614ac4a8f684f8de83d39f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  volumeScript: {fileID: 0}
---- !u!82 &519420035
-AudioSource:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 519420028}
-  m_Enabled: 1
-  serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
-  m_Volume: 1
-  m_Pitch: 1
-  Loop: 0
-  Mute: 0
-  Spatialize: 0
-  SpatializePostEffects: 0
-  Priority: 128
-  DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 500
-  Pan2D: 0
-  rolloffMode: 0
-  BypassEffects: 0
-  BypassListenerEffects: 0
-  BypassReverbZones: 0
-  rolloffCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  panLevelCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  spreadCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  reverbZoneMixCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
 --- !u!1 &533552753
 GameObject:
   m_ObjectHideFlags: 0
@@ -2891,7 +2773,7 @@ MonoBehaviour:
   homeSquadPos: {x: 0, y: 0, z: 0}
   homeTankPos: {x: 0, y: 0, z: 0}
   battleFieldSprite: {fileID: 1613160348}
-  battleFieldCover: {fileID: 0}
+  battleFieldCover: {fileID: 612854465}
   homeSquadDeploy: {fileID: 187509418}
   homeTankDeploy: {fileID: 257196196}
   homeObjective: {fileID: 1570886845}
@@ -3630,11 +3512,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   homeTank: {fileID: 257196196}
+  homeTankscript: {fileID: 257196199}
   enemyTank: {fileID: 111725929}
+  enemyTankScript: {fileID: 111725932}
   homeSquad: {fileID: 187509418}
+  homeSquadScript: {fileID: 187509421}
   enemySquad: {fileID: 546885127}
+  enemySquadScript: {fileID: 546885130}
   shootPos: {fileID: 1626605251}
+  mainScript: {fileID: 1242163254}
   nameShooting: 
+  hits: 0
+  rollHits: 0
+  wounds: 0
+  rollWounds: 0
   mainCamera: {fileID: 519420031}
 --- !u!1 &1676691871
 GameObject:

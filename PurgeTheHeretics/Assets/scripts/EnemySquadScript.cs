@@ -130,7 +130,15 @@ public class EnemySquadScript : MonoBehaviour, IPointerDownHandler
 }
 public class EnemySquadStats : Stats
 {
-    
+    public void Initialize(string pieceName)
+    {
+        this.pieceName = pieceName;
+        attacks = 12;
+        accuracy = 3;
+        wounding = 5;
+        damage = 1;
+        wounds = 6;
+    }
 }
 
 

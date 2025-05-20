@@ -7,13 +7,11 @@ public class HomeObjectiveScript : MonoBehaviour
 {
     public void OnTriggerEnter2D(Collider2D other)
     {
-        if (Vector3.Distance(transform.position, other.transform.position) < 0.1f)
+        if (other.tag == "EnTank" || other.tag == "EnSquad" &&
+            other.transform.position.x == this.transform.position.x &&
+            other.transform.position.y == this.transform.position)
         {
-            Debug.Log(other.tag);
-            if (other.tag == "EnTank" || other.tag == "EnSquad")
-            {
-                SceneManager.LoadScene("EnemyWins");
-            }
+            SceneManager.LoadScene("EnemyWins");
         }
     }
 }

@@ -134,5 +134,13 @@ public class EnemyTankScript : MonoBehaviour, IPointerDownHandler
 }
 public class EnemyTankStats : Stats
 {
-
+    public void Initialize(string pieceName)
+    {
+        this.pieceName = pieceName;
+        attacks = 5;
+        accuracy = 5;
+        wounding = 2;
+        damage = 2;
+        wounds = 16;
+    }
 }

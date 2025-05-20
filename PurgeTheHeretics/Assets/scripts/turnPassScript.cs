@@ -2,14 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using TMPro;
 
 public class turnPassScript : MonoBehaviour, IPointerDownHandler
 {
+    public TextMeshProUGUI turnIndicate;
+    public TextMeshProUGUI phaseIndicate;
     public main mainScript;
     public changePhaseScript changePhaseScript;
     public void OnPointerDown(PointerEventData eventData)
     {
-        changePhaseScript.RestOfIt();
 
         if (mainScript.Turn == "Home")
         {
@@ -25,6 +27,8 @@ public class turnPassScript : MonoBehaviour, IPointerDownHandler
         {
             mainScript.CurrentPhase = "Movement";
         }
+        turnIndicate.text = mainScript.Turn;
+        phaseIndicate.text = mainScript.CurrentPhase;
     }
 
 }

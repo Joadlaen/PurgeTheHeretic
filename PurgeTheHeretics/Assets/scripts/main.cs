@@ -127,6 +127,7 @@ public class Stats: MonoBehaviour
     public int wounding = 0;
     public int damage= 0;
     public int wounds = 0;
+    public bool dead = false;
 }
 
 
