@@ -6,6 +6,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UIElements;
 using static UnityEngine.Rendering.DebugUI.Table;
+using UnityEngine.SceneManagement;
 
 public class HomeSquadScript : MonoBehaviour, IPointerDownHandler
 {
@@ -108,6 +109,10 @@ public class HomeSquadScript : MonoBehaviour, IPointerDownHandler
         homeSquadMovement = newPosition;
         Instantiate(MovedTint, newPosition, Quaternion.identity);
         movedPiece = true;
+        if (newPosition.x == mainspring.enemyObjectiveCol && newPosition.y == mainspring.enemyObjectiveCol)
+        {
+            SceneManager.LoadScene("EnemyWins");
+        }
     }
     public void shootDirectionGenerate()
     {
