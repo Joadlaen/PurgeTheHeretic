@@ -17,4 +17,6 @@ the target is assigned by looking at the vector2 position and finding the piece 
 
 the button will change the player and phase when necessary such as pressing it during the shooting phase.
 
-the game ends when a player reaches the opposite objective or kills both of the other player's pieces.
+the game ends when a player reaches the opposite objective or kills both of the other player's pieces. (the latter goal will be a future endeavour due to time constraints and bugs present in the current code)
+
+made using unity version 2022.3.39f1 in the 2d format. 
