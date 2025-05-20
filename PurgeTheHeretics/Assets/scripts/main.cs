@@ -34,11 +34,11 @@ public class main : MonoBehaviour
     public int ROWS = 7;
     public int COLUMNS = 7;
     public float SPACING = 0.5f;
-    public int enemyObjectPositionRow = 7;
-    public int enemyObjectPositionCol = 7;
+    public int enemyObjectPositionRow = 5;
+    public int enemyObjectPositionCol = 5;
     public int homeObjectPositionRow = 0;
     public int homeObjectPositionCol = 0;
-    public int centeringVariable = 3;
+    public int centeringVariable = 2;
     public string CurrentPhase = "Movement";
     public string Turn = "";
 

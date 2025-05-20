@@ -51,6 +51,7 @@ public class EnemyTankScript : MonoBehaviour, IPointerDownHandler
             }
             if (mainScript.CurrentPhase == "Shooting" && ! shotPiece)
             {
+                movedPiece = false;
                 shootDirectionGenerate();
                 shooterScript.nameShooting = "EnTank";
             }

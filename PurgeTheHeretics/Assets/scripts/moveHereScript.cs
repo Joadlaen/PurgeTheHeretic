@@ -24,7 +24,7 @@ public class moveHereScript : MonoBehaviour, IPointerDownHandler
     public Camera mainCamera;
 
     public string nameToMove = "";
-    public string tagToRemove = "";
+    //public string tagToRemove = "";
 
     Vector2 newPos = new Vector2();
     //shows where the object should move
@@ -46,29 +46,29 @@ public class moveHereScript : MonoBehaviour, IPointerDownHandler
         Debug.Log(nameToMove);
         if (nameToMove == "HomeTank")
         {
-            tagToRemove = "HomeTank";
+            //tagToRemove = "HomeTank";
             MoveSprite(homeTank);
             homeTankScript.UpdateHomeTankPosition(newPos);
         }
         if (nameToMove == "HomeSquad")
         {
-            tagToRemove = "HomeSquad";
+            //tagToRemove = "HomeSquad";
             MoveSprite(homeSquad);
             homeSquadScript.UpdateHomeSquadPosition(newPos);
         }
         if (nameToMove == "EnSquad")
         {
-            tagToRemove = "EnSquad";
+            //tagToRemove = "EnSquad";
             MoveSprite(enemySquad);
             enemySquadScript.UpdateEnemySquadPosition(newPos);
         }
         if (nameToMove == "EnTank")
         {
-            tagToRemove = "EnTank";
+            //tagToRemove = "EnTank";
             MoveSprite(enemyTank);
             enemyTankScript.UpdateEnemyTankPosition(newPos);
         }
-        Debug.Log("tag set to " + tagToRemove);
+        //Debug.Log("tag set to " + tagToRemove);
     }
 
     private void MoveSprite(GameObject ObjectToMove)
@@ -79,26 +79,26 @@ public class moveHereScript : MonoBehaviour, IPointerDownHandler
 
         Cleanup();
     }
-    private void RemoveOriginal()
-    {
-        Debug.Log("in RemoveOriginal" + tagToRemove);
-        // Find all GameObjects with the specified tag
-        GameObject[] objectsWithTag = GameObject.FindGameObjectsWithTag(tagToRemove);
+    //private void RemoveOriginal()
+    //{
+    //    Debug.Log("in RemoveOriginal" + tagToRemove);
+    //    // Find all GameObjects with the specified tag
+    //    GameObject[] objectsWithTag = GameObject.FindGameObjectsWithTag(tagToRemove);
 
-        // Loop through each object with the specified tag
-        foreach (GameObject obj in objectsWithTag)
-        {
-            // Convert the object's world position to the camera's viewport position
-            Vector3 viewportPosition = mainCamera.WorldToViewportPoint(obj.transform.position);
+    //    // Loop through each object with the specified tag
+    //    foreach (GameObject obj in objectsWithTag)
+    //    {
+    //        // Convert the object's world position to the camera's viewport position
+    //        Vector3 viewportPosition = mainCamera.WorldToViewportPoint(obj.transform.position);
 
-            // Check if the object is within the camera's viewport
-            if (viewportPosition.x >= 0 && viewportPosition.x <= 1 && viewportPosition.y >= 0 && viewportPosition.y <= 1 && viewportPosition.z > 0)
-            {
-                // Destroy the object if it is within the camera's view
-                Destroy(obj);
-            }
-        }
-    }
+    //        // Check if the object is within the camera's viewport
+    //        if (viewportPosition.x >= 0 && viewportPosition.x <= 1 && viewportPosition.y >= 0 && viewportPosition.y <= 1 && viewportPosition.z > 0)
+    //        {
+    //            // Destroy the object if it is within the camera's view
+    //            Destroy(obj);
+    //        }
+    //    }
+    //}
     private void Teleport(GameObject ObjectToMove, Vector2 targetPosition, Quaternion rotation)
     {
         Debug.Log(ObjectToMove.name + targetPosition.ToString() + rotation.ToString());

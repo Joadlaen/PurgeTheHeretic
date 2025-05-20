@@ -39,9 +39,9 @@ public class shootThisScript : MonoBehaviour, IPointerDownHandler
         Vector2 worldPos = transform.position;
         int x = Mathf.RoundToInt(worldPos.x);
         int y = Mathf.RoundToInt(worldPos.y);
-        if (mainScript.gridTracker[x, y] != null)
+        if (mainScript.gridTracker[x + mainScript.centeringVariable, y + mainScript.centeringVariable] != null)
         {
-            if (mainScript.gridTracker[x, y] == "HomeSquad")
+            if (mainScript.gridTracker[x + mainScript.centeringVariable, y + mainScript.centeringVariable] == "HomeSquad")
             {
                 shootTarget = homeSquad;
 
@@ -54,7 +54,7 @@ public class shootThisScript : MonoBehaviour, IPointerDownHandler
                     ShootAtThings(enemySquad, shootTarget);
                 }
             }
-            if (mainScript.gridTracker[x, y] == "HomeTank")
+            if (mainScript.gridTracker[x + mainScript.centeringVariable, y + mainScript.centeringVariable] == "HomeTank")
             {
                 shootTarget = homeTank;
 
@@ -64,10 +64,11 @@ public class shootThisScript : MonoBehaviour, IPointerDownHandler
                 }
                 if (nameShooting == "EnSquad")
                 {
+                    enemySquadScript.shotPiece = true;
                     ShootAtThings(enemySquad, shootTarget);
                 }
             }
-            if (mainScript.gridTracker[x, y] == "EnTank")
+            if (mainScript.gridTracker[x + mainScript.centeringVariable, y + mainScript.centeringVariable] == "EnTank")
             {
                 shootTarget = enemyTank;
                 if (nameShooting == "HomeTank")
@@ -79,7 +80,7 @@ public class shootThisScript : MonoBehaviour, IPointerDownHandler
                     ShootAtThings(homeSquad, shootTarget);
                 }
             }
-            if (mainScript.gridTracker[x, y] == "EnTank")
+            if (mainScript.gridTracker[x + mainScript.centeringVariable, y + mainScript.centeringVariable] == "EnTank")
             {
                 shootTarget = enemyTank;
                 if (nameShooting == "HomeTank")
@@ -92,6 +93,10 @@ public class shootThisScript : MonoBehaviour, IPointerDownHandler
                 }
             }
         }
+        else;
+        {
+            Debug.Log("nothing there");
+        }
     }
     
 
@@ -101,7 +106,12 @@ public class shootThisScript : MonoBehaviour, IPointerDownHandler
 
     public void ShootAtThings(GameObject objectFiring, GameObject objectTarget)
     {
-        Stats attackerStats = objectFiring.GetComponent<Stats>();
+        if (objectFiring == null || objectTarget == null)
+        {
+            Debug.LogError($"ShootAtThings Error: objectFiring or objectTarget is null. Firing: {objectFiring}, Target: {objectTarget}");
+            return;
+        }
+            Stats attackerStats = objectFiring.GetComponent<Stats>();
         Stats targetStats = objectTarget.GetComponent<Stats>();
 
         rollHits = 0;
@@ -130,27 +140,7 @@ public class shootThisScript : MonoBehaviour, IPointerDownHandler
             targetStats.wounds -= rollWounds * attackerStats.damage;
             Debug.Log($"{nameShooting} did {rollWounds * attackerStats.damage} damage to {objectTarget.name}");
         }
-    }
 
-
-
-
-    public void Cleanup()
-    {
-        GameObject[] objectsWithTag = GameObject.FindGameObjectsWithTag("ShootTint");
-
-        foreach (GameObject obj in objectsWithTag)
-        {
-        // Convert the object's world position to the camera's viewport position
-            Vector3 viewportPosition = mainCamera.WorldToViewportPoint(obj.transform.position);
-
-        // Check if the object is within the camera's viewport
-            if (viewportPosition.x >= 0 && viewportPosition.x <= 1 && viewportPosition.y >= 0 && viewportPosition.y <= 1 && viewportPosition.z > 0)
-            {
-                // Destroy the object if it is within the camera's view
-                Destroy(obj);
-            }
-        }
     }
 
 }

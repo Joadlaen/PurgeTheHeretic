@@ -10,9 +10,16 @@ public class turnPassScript : MonoBehaviour, IPointerDownHandler
     public TextMeshProUGUI phaseIndicate;
     public main mainScript;
     public changePhaseScript changePhaseScript;
+    public EnemySquadScript enemySquadScript;
+    public EnemyTankScript enemyTankScript;
+    public HomeTankScript homeTankScript;
+    public HomeSquadScript homeSquadScript;
     public void OnPointerDown(PointerEventData eventData)
     {
-
+        homeSquadScript.movedPiece = false;
+        homeTankScript.movedPiece = false;
+        enemyTankScript.movedPiece = false;
+        enemySquadScript.movedPiece = false;
         if (mainScript.Turn == "Home")
         {
             mainScript.Turn = "Enemy";

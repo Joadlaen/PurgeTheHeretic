@@ -32,6 +32,10 @@ public class HomeTankScript : MonoBehaviour, IPointerDownHandler
 
     public void Start()
     {
+        if (mainScript == null)
+        {
+            Debug.Log("not being assigned");
+        }
         homeTankMovement = mainScript.homeTankPos;
         HomeTankStats stats = GetComponent<HomeTankStats>();
         stats.Initialize("HomeTank");        
@@ -53,6 +57,7 @@ public class HomeTankScript : MonoBehaviour, IPointerDownHandler
             }
             if (mainScript.CurrentPhase == "Shooting" && ! shotPiece)
             {
+                movedPiece = false;
                 shootDirectionGenerate();
                 shooterScript.nameShooting = "HomeTank";
             }
