@@ -9,7 +9,7 @@ public class EnemyObjectiveScript : MonoBehaviour
     {
         if (other.tag == "HomeTank" || other.tag == "HomeSquad" && 
             other.transform.position.x == this.transform.position.x && 
-            other.transform.position.y == this.transform.position)
+            other.transform.position.y == this.transform.position.y)
         {
             SceneManager.LoadScene("HomeWins");
         }

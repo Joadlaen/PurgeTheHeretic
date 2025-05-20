@@ -9,9 +9,11 @@ public class HomeObjectiveScript : MonoBehaviour
     {
         if (other.tag == "EnTank" || other.tag == "EnSquad" &&
             other.transform.position.x == this.transform.position.x &&
-            other.transform.position.y == this.transform.position)
+            other.transform.position.y == this.transform.position.y)
         {
-            SceneManager.LoadScene("EnemyWins");
+            SceneManager.LoadScene("HomeWins");
         }
+
+
     }
 }

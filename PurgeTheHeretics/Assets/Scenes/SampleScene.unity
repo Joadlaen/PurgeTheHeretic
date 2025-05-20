@@ -1192,6 +1192,10 @@ MonoBehaviour:
   phaseIndicate: {fileID: 1765034434}
   mainScript: {fileID: 1242163254}
   changePhaseScript: {fileID: 551704118}
+  enemySquadScript: {fileID: 546885130}
+  enemyTankScript: {fileID: 111725932}
+  homeTankScript: {fileID: 257196199}
+  homeSquadScript: {fileID: 187509421}
 --- !u!1 &257196196
 GameObject:
   m_ObjectHideFlags: 0
@@ -1380,7 +1384,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -476.6, y: -30}
+  m_AnchoredPosition: {x: -247, y: 25}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &430457699
@@ -1476,7 +1480,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 91.87767, w: 0}
+  m_margin: {x: 0, y: 0, z: -4.9410553, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -1494,6 +1498,7 @@ GameObject:
   - component: {fileID: 462903329}
   - component: {fileID: 462903330}
   - component: {fileID: 462903331}
+  - component: {fileID: 462903332}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: EnOb
@@ -1625,6 +1630,33 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!50 &462903332
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 462903327}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -1924,7 +1956,6 @@ MonoBehaviour:
   moveToThisPoint: {fileID: 533552753}
   mainCamera: {fileID: 519420031}
   nameToMove: 
-  tagToRemove: 
 --- !u!1 &546885127
 GameObject:
   m_ObjectHideFlags: 0
@@ -2116,6 +2147,10 @@ MonoBehaviour:
   mainCamera: {fileID: 519420031}
   moveHereScript: {fileID: 533552757}
   shootThisScript: {fileID: 1626605255}
+  enemySquadScript: {fileID: 546885130}
+  enemyTankScript: {fileID: 111725932}
+  homeTankScript: {fileID: 257196199}
+  homeSquadScript: {fileID: 187509421}
 --- !u!212 &551704119
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2897,7 +2932,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -459.3, y: 156}
+  m_AnchoredPosition: {x: -216, y: 126}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1509157341
@@ -2947,8 +2982,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 15
+  m_fontSizeBase: 15
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -2983,7 +3018,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: -1.466919, y: 0, z: 167.23236, w: 16.136444}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -3093,6 +3128,7 @@ GameObject:
   - component: {fileID: 1570886847}
   - component: {fileID: 1570886848}
   - component: {fileID: 1570886849}
+  - component: {fileID: 1570886850}
   m_Layer: 0
   m_Name: Home
   m_TagString: HomeOb
@@ -3224,6 +3260,33 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!50 &1570886850
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1570886845}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &1613160348
 GameObject:
   m_ObjectHideFlags: 0
@@ -4010,7 +4073,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 59.629486, w: 0}
+  m_margin: {x: 0, y: 0, z: -35.72229, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -4040,7 +4103,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -478.4, y: -128.6}
+  m_AnchoredPosition: {x: -235, y: -99}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1855749644

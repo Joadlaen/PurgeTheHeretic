@@ -12,6 +12,10 @@ public class changePhaseScript : MonoBehaviour, IPointerDownHandler
     public Camera mainCamera;
     public moveHereScript moveHereScript;
     public shootThisScript shootThisScript;
+    public EnemySquadScript enemySquadScript;
+    public EnemyTankScript enemyTankScript;
+    public HomeTankScript homeTankScript;
+    public HomeSquadScript homeSquadScript;
 
     void Awake()
     {
@@ -20,25 +24,10 @@ public class changePhaseScript : MonoBehaviour, IPointerDownHandler
     }
     public void OnPointerDown(PointerEventData eventData)
     {
-        Debug.Log(mainScript.CurrentPhase);
-        if (mainScript.CurrentPhase == "Movement")
-        {
-            mainScript.CurrentPhase = "Shooting";
-            Debug.Log(mainScript.CurrentPhase);
-        }
-        else if (mainScript.CurrentPhase == "Shooting")
-        {
-            if (mainScript.Turn == "Home")
-            {
-                mainScript.Turn = "Enemy";
-                mainScript.CurrentPhase = "Movement";
-            }
-            else if (mainScript.Turn == "Enemy")
-            {
-                mainScript.Turn = "Home";
-                mainScript.CurrentPhase = "Movement";
-            }
-        }
+        homeSquadScript.movedPiece = false;
+        homeTankScript.movedPiece = false;
+        enemyTankScript.movedPiece = false;
+        enemySquadScript.movedPiece = false;
         Debug.Log(mainScript.CurrentPhase);
         Debug.Log(mainScript.Turn);
         Debug.Log(mainScript.CurrentPhase);
