@@ -111,7 +111,7 @@ public class HomeSquadScript : MonoBehaviour, IPointerDownHandler
         movedPiece = true;
         if (newPosition.x == mainspring.enemyObjectiveCol && newPosition.y == mainspring.enemyObjectiveCol)
         {
-            SceneManager.LoadScene("EnemyWins");
+            SceneManager.LoadScene("HomeWins");
         }
     }
     public void shootDirectionGenerate()
