@@ -109,7 +109,7 @@ public class HomeSquadScript : MonoBehaviour, IPointerDownHandler
         homeSquadMovement = newPosition;
         Instantiate(MovedTint, newPosition, Quaternion.identity);
         movedPiece = true;
-        if (newPosition.x == mainScript.enemyObjectPositionCol && newPosition.y == mainScript.enemyObjectPositionCol)
+        if (newPosition.x + mainScript.centeringVariable == mainScript.enemyObjectPositionCol + 1 && newPosition.y + mainScript.centeringVariable == mainScript.enemyObjectPositionCol + 1)
         {
             SceneManager.LoadScene("HomeWins");
         }
