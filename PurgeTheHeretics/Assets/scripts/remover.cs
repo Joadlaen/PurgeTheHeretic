@@ -38,6 +38,7 @@ public class remover : MonoBehaviour, IPointerDownHandler
                 Destroy(obj);
             }
         }
+        // a third fumction was created but it could be done elsewhere and had more use there.
         // foreach (GameObject obj in objectsWithTag3)
         // {
         //     // Convert the object's world position to the camera's viewport position

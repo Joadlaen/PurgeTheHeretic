@@ -82,6 +82,7 @@ public class HomeTankScript : MonoBehaviour, IPointerDownHandler
         //{
         //    Destroy(item);
         //}
+        // creates a plus shape of movement indicator using two nested for loops
         for (int x = -1; x < 2; x += 2)
         {
             for (int y = 1; y <= MOVEMENT; y++)
@@ -127,13 +128,16 @@ public class HomeTankScript : MonoBehaviour, IPointerDownHandler
     }
     public void UpdateHomeTankPosition(Vector3 newPosition)
     {
+        // sets the new position for future logic and calculations
         Debug.Log("tank pos update to " + newPosition);
         homeTankMovement.x = newPosition.x;
         homeTankMovement.y = newPosition.y;
         homeTankMovement.z = newPosition.z;
         Debug.Log("new tank pos " + homeTankMovement);
+        // shows and logically declares that it can't be moved until otherwise stated
         Instantiate(MovedTint, newPosition, Quaternion.identity);
         movedPiece = true;
+        // win condition for this piece, checks against the grid tracker in main script
         if ((newPosition.x + mainScript.centeringVariable == mainScript.enemyObjectPositionCol + 1) &&
     (newPosition.y + mainScript.centeringVariable == mainScript.enemyObjectPositionRow + 1))
         {
@@ -141,7 +145,7 @@ public class HomeTankScript : MonoBehaviour, IPointerDownHandler
             SceneManager.LoadScene(2);
         }
     }
-
+    // same as move direction but it generates shoot indicators instead and is not in use until shooting script is working
     public void shootDirectionGenerate()
     {
         for (int x = -1; x < 2; x += 2)
@@ -166,6 +170,9 @@ public class HomeTankScript : MonoBehaviour, IPointerDownHandler
     }
 }
 
+// stats classis inherited to the subclass and initialised here.
+// object are mostly used for shooting script but could be utilised elsewhere as well as other constants being included in the class as objects
+// these are my plans for future projects
 public class HomeTankStats : Stats
 {
     public void Initialize(string pieceName)

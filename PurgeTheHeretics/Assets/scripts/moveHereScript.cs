@@ -7,6 +7,7 @@ using UnityEngine.EventSystems;
 
 public class moveHereScript : MonoBehaviour, IPointerDownHandler
 {
+    // declare scripts and game objects which are used or have components to be used
     public HomeTankScript homeTankScript;
     public GameObject homeTank;
 
@@ -23,6 +24,7 @@ public class moveHereScript : MonoBehaviour, IPointerDownHandler
     public GameObject moveToThisPoint;
     public Camera mainCamera;
 
+    // declare name to be assigned later
     public string nameToMove = "";
     //public string tagToRemove = "";
 
@@ -35,16 +37,23 @@ public class moveHereScript : MonoBehaviour, IPointerDownHandler
 
     public void UpdateNameToMove(string name)
     {
+        // assures it is empty because not doing so has caused problems and assigning the new name to it.
         nameToMove = "";
         nameToMove = name;
     }
     public void OnPointerDown(PointerEventData eventData)
     {
+        // locate the chosen indicator
+        // the function has a habit of choosing the wrong point as it goes by the position of the pointer instead of anything else.
+        // this means that the player must select the positin to move to by clicking the top right corner
         newPos = mainCamera.ScreenToWorldPoint(eventData.position);
         newPos = new Vector2 (Mathf.Floor(newPos.x), Mathf.Floor(newPos.y));
 
         Debug.Log("Clicked position: " + newPos.x + ", " + newPos.y);
         Debug.Log(nameToMove);
+        // sends the respective object to the movement function when name to move is checked
+        // during testing, home squad was moving home tank then itself whenit shouldn't move home tank. 
+        // the solution was to clear the name to move slot when reassigning it
         if (nameToMove == "HomeTank")
         {
             //tagToRemove = "HomeTank";
@@ -71,7 +80,7 @@ public class moveHereScript : MonoBehaviour, IPointerDownHandler
         }
         //Debug.Log("tag set to " + tagToRemove);
     }
-
+    // called function combines arguments and calls another function. it then calls the cleanup function which removes the movement indicators
     private void MoveSprite(GameObject ObjectToMove)
     {
         //RemoveOriginal();
@@ -100,6 +109,7 @@ public class moveHereScript : MonoBehaviour, IPointerDownHandler
     //        }
     //    }
     //}
+    // teleports the object to the specified position like in main script
     private void Teleport(GameObject ObjectToMove, Vector2 targetPosition, Quaternion rotation)
     {
         Debug.Log(ObjectToMove.name + targetPosition.ToString() + rotation.ToString());

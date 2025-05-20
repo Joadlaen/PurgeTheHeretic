@@ -10,7 +10,7 @@ using UnityEngine.SceneManagement;
 public class EnemyTankScript : MonoBehaviour, IPointerDownHandler
 {
 
-    
+    // vector2 worked for this one
     public Vector2 enemyTankMovement; // Store movement input
 
     System.Random D6 = new System.Random();

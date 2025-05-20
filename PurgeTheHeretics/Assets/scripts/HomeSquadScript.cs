@@ -10,8 +10,10 @@ using UnityEngine.SceneManagement;
 
 public class HomeSquadScript : MonoBehaviour, IPointerDownHandler
 {
+    // struct keeps track of the position of the object
     public Vector3 homeSquadMovement; // Store movement input
 
+    // game objects do different things when clicked on after spawning on or around the player piece
     System.Random D6 = new System.Random();
     public GameObject moveTint;
     public GameObject shootTint;
@@ -20,10 +22,12 @@ public class HomeSquadScript : MonoBehaviour, IPointerDownHandler
     public bool movedPiece = false;
     public bool shotPiece = false;
 
+    // scripts contain functions and variables required by this object
     public main mainScript;
     public moveHereScript moverScript;
     public shootThisScript shooterScript;
 
+    // constants that could be used to show inheritance
     const int RANGE = 6;
     const int MOVEMENT = 1;
     const int SPACING = 1;
@@ -31,6 +35,7 @@ public class HomeSquadScript : MonoBehaviour, IPointerDownHandler
 
     public void Start()
     {
+        // vector3 prevents rendering issues
         homeSquadMovement.x = mainScript.homeSquadPos.x;
         homeSquadMovement.y = mainScript.homeSquadPos.y;
         homeSquadMovement.z = mainScript.homeSquadPos.z;
@@ -42,6 +47,7 @@ public class HomeSquadScript : MonoBehaviour, IPointerDownHandler
 
     public void OnPointerDown(PointerEventData eventData)
     {
+        // sends object name to the mover script for the object transform operations
         if (mainScript != null && mainScript.Turn == "Home")
         {
             Debug.Log("EnemySquad");
@@ -58,7 +64,7 @@ public class HomeSquadScript : MonoBehaviour, IPointerDownHandler
             }
         }
     }
-
+    // spawns indicators going in the reverse direction first then spawns then in the forwards direction relative to the objective
     public void moveDirectionGenerate()
     {
         for (int x = -1; x < 2; x+= 2)
@@ -104,12 +110,15 @@ public class HomeSquadScript : MonoBehaviour, IPointerDownHandler
         //    move.GetComponent<moveHereScript>().UpdateNameToMove("HomeSquad");
         //}
     }
+
     public void UpdateHomeSquadPosition(Vector2 newPosition)
     {
+        // sets new position for future calculations and prevents further movement until phase changer or turn pass is clicked
         Debug.Log("tank pos update");
         homeSquadMovement = newPosition;
         Instantiate(MovedTint, newPosition, Quaternion.identity);
         movedPiece = true;
+    // should run scene for home winning
         if ((newPosition.x + mainScript.centeringVariable == mainScript.enemyObjectPositionCol) &&
     (newPosition.y + mainScript.centeringVariable == mainScript.enemyObjectPositionRow))
         {
@@ -117,6 +126,7 @@ public class HomeSquadScript : MonoBehaviour, IPointerDownHandler
             SceneManager.LoadScene(2);
         }
     }
+    //same as movement
     public void shootDirectionGenerate()
     {
         for (int x = -1; x < 2; x += 2)
@@ -139,6 +149,7 @@ public class HomeSquadScript : MonoBehaviour, IPointerDownHandler
         }
     }
 }
+// same as all other sun classes
 public class HomeSquadStats : Stats
 {
     public void Initialize(string pieceName)

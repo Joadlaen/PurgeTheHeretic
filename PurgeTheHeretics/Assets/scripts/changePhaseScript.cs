@@ -33,9 +33,10 @@ public class changePhaseScript : MonoBehaviour, IPointerDownHandler
         Debug.Log(mainScript.CurrentPhase);
         if (mainScript.CurrentPhase == "Movement")
         {
-            mainScript.CurrentPhase = "Shooting";
-            Debug.Log(mainScript.CurrentPhase);
+            //mainScript.CurrentPhase = "Shooting";
+            Debug.Log("it's always " + mainScript.CurrentPhase);
         }
+        //until shooting is working, this will not be possible to activate
         else if (mainScript.CurrentPhase == "Shooting")
         {
             if (mainScript.Turn == "Home")

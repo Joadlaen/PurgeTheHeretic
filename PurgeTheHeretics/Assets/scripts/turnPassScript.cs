@@ -6,6 +6,7 @@ using TMPro;
 
 public class turnPassScript : MonoBehaviour, IPointerDownHandler
 {
+    // declare and assign textmesh and scripts
     public TextMeshProUGUI turnIndicate;
     public TextMeshProUGUI phaseIndicate;
     public main mainScript;
@@ -16,26 +17,34 @@ public class turnPassScript : MonoBehaviour, IPointerDownHandler
     public HomeSquadScript homeSquadScript;
     public void OnPointerDown(PointerEventData eventData)
     {
+        // resets the moved piece so pieces can be moved when the next turn would come around. the same would be done for shooting
         homeSquadScript.movedPiece = false;
         homeTankScript.movedPiece = false;
         enemyTankScript.movedPiece = false;
         enemySquadScript.movedPiece = false;
-        if (mainScript.Turn == "Home")
+        // checks the current trun and switches it appropriately
+        if (mainScript.CurrentPhase == "Movement")
         {
-            mainScript.Turn = "Enemy";
+            mainScript.CurrentPhase = "Shooting";
         }
-        else if (mainScript.Turn == "Enemy")
-        {
-            mainScript.Turn = "Home";
-        }
-        Debug.Log(mainScript.gridTracker);
-
+        // when the turn needs to change as well
         if (mainScript.CurrentPhase == "Shooting")
         {
             mainScript.CurrentPhase = "Movement";
+
+            if (mainScript.Turn == "Home")
+            {
+                mainScript.Turn = "Enemy";
+            }
+            else if (mainScript.Turn == "Enemy")
+            {
+                mainScript.Turn = "Home";
+            }
+            Debug.Log(mainScript.gridTracker);
+            // tells the players whose turn it is
+            turnIndicate.text = mainScript.Turn;
+            phaseIndicate.text = mainScript.CurrentPhase;
         }
-        turnIndicate.text = mainScript.Turn;
-        phaseIndicate.text = mainScript.CurrentPhase;
     }
 
 }
