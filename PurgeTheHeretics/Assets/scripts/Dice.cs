@@ -5,6 +5,7 @@ using UnityEngine;
 public class NewBehaviourScript : MonoBehaviour
 {
     // Start is called before the first frame update
+    // I originally wanted to implement a central dice system
     void Start()
     {
         
