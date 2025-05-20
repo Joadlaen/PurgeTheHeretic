@@ -31,8 +31,8 @@ public class main : MonoBehaviour
     public HomeSquadScript homeSquadScript;
     public TurnDecider turnToPlay;
 
-    public int ROWS = 7;
-    public int COLUMNS = 7;
+    public int ROWS = 5;
+    public int COLUMNS = 5;
     public float SPACING = 0.5f;
     public int enemyObjectPositionRow = 5;
     public int enemyObjectPositionCol = 5;
