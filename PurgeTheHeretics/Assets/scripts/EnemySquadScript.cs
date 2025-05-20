@@ -107,7 +107,7 @@ public class EnemySquadScript : MonoBehaviour, IPointerDownHandler
         enemySquadMovement = newPosition;
         Instantiate(MovedTint, newPosition, Quaternion.identity);
         movedPiece = true;
-        if (newPosition.x == mainspring.enemyObjectiveCol && newPosition.y == mainspring.enemyObjectiveCol)
+        if (newPosition.x == mainScript.enemyObjectPositionCol && newPosition.y == mainScript.enemyObjectPositionCol)
         {
             SceneManager.LoadScene("EnemyWins");
         }

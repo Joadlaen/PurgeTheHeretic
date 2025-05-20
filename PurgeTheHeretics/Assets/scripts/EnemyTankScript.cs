@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UIElements;
 using static UnityEngine.Rendering.DebugUI.Table;
-using UnityEngine.SceneManager;
+using UnityEngine.SceneManagement;
 
 public class EnemyTankScript : MonoBehaviour, IPointerDownHandler
 {
@@ -111,7 +111,7 @@ public class EnemyTankScript : MonoBehaviour, IPointerDownHandler
         enemyTankMovement = newPosition;
         Instantiate(MovedTint, newPosition, Quaternion.identity);
         movedPiece = true;
-        if (newPosition.x == mainspring.enemyObjectiveCol && newPosition.y == mainspring.enemyObjectiveCol)
+        if (newPosition.x == mainScript.enemyObjectPositionCol && newPosition.y == mainScript.enemyObjectPositionCol)
         {
             SceneManager.LoadScene("EnemyWins");
         }
