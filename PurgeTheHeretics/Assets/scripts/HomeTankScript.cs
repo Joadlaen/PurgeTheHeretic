@@ -6,6 +6,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UIElements;
 using static UnityEngine.Rendering.DebugUI.Table;
+using UnityEngine.SceneManager;
 
 public class HomeTankScript : MonoBehaviour, IPointerDownHandler
 {
@@ -127,6 +128,10 @@ public class HomeTankScript : MonoBehaviour, IPointerDownHandler
         Debug.Log("new tank pos " + homeTankMovement);
         Instantiate(MovedTint, newPosition, Quaternion.identity);
         movedPiece = true;
+        if (newPosition.x == mainspring.enemyObjectiveCol && newPosition.y == mainspring.enemyObjectiveCol)
+        {
+            SceneManager.LoadScene("HomeWins");
+        }
     }
 
     public void shootDirectionGenerate()
