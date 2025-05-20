@@ -109,7 +109,8 @@ public class EnemySquadScript : MonoBehaviour, IPointerDownHandler
         movedPiece = true;
         if (newPosition.x + mainScript.centeringVariable == mainScript.homeObjectPositionCol && newPosition.y + mainScript.centeringVariable == mainScript.homeObjectPositionCol)
         {
-            SceneManager.LoadScene("EnemyWins");
+            Debug.Log("should endthe game");
+            SceneManager.LoadScene(3);
         }
     }
     public void shootDirectionGenerate()

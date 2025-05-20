@@ -10,7 +10,7 @@ using UnityEngine.SceneManagement;
 
 public class HomeSquadScript : MonoBehaviour, IPointerDownHandler
 {
-    public Vector2 homeSquadMovement; // Store movement input
+    public Vector3 homeSquadMovement; // Store movement input
 
     System.Random D6 = new System.Random();
     public GameObject moveTint;
@@ -33,6 +33,7 @@ public class HomeSquadScript : MonoBehaviour, IPointerDownHandler
     {
         homeSquadMovement.x = mainScript.homeSquadPos.x;
         homeSquadMovement.y = mainScript.homeSquadPos.y;
+        homeSquadMovement.z = mainScript.homeSquadPos.z;
     }
 
 
@@ -64,14 +65,14 @@ public class HomeSquadScript : MonoBehaviour, IPointerDownHandler
         {
             for (int y = 1; y <= MOVEMENT; y++)
             {
-                Vector2 position1 = new Vector2(homeSquadMovement.x + (y*x*SPACING) - centeringVariable, homeSquadMovement.y);
-                Vector2 position2 = new Vector2(homeSquadMovement.x, homeSquadMovement.y + (y*x * SPACING) - centeringVariable);
-                if (position1.x >= 0 - mainScript.centeringVariable)
+                Vector3 position1 = new Vector3(homeSquadMovement.x + (y * x * SPACING) - centeringVariable, homeSquadMovement.y, 1f);
+                Vector3 position2 = new Vector3(homeSquadMovement.x, homeSquadMovement.y + (y * x * SPACING) - centeringVariable, 1f);
+                if (position1.x < mainScript.ROWS - mainScript.centeringVariable)
                 {
                     GameObject move = Instantiate(moveTint, position1, Quaternion.identity);
                     move.GetComponent<moveHereScript>().UpdateNameToMove("HomeSquad");
                 }
-                if (position2.y >= 0 - mainScript.centeringVariable)
+                if (position2.y < mainScript.COLUMNS - mainScript.centeringVariable)
                 {
                     GameObject move = Instantiate(moveTint, position2, Quaternion.identity);
                     move.GetComponent<moveHereScript>().UpdateNameToMove("HomeSquad");
@@ -109,9 +110,11 @@ public class HomeSquadScript : MonoBehaviour, IPointerDownHandler
         homeSquadMovement = newPosition;
         Instantiate(MovedTint, newPosition, Quaternion.identity);
         movedPiece = true;
-        if (newPosition.x + mainScript.centeringVariable == mainScript.enemyObjectPositionCol + 1 && newPosition.y + mainScript.centeringVariable == mainScript.enemyObjectPositionCol + 1)
+        if ((newPosition.x + mainScript.centeringVariable == mainScript.enemyObjectPositionCol) &&
+    (newPosition.y + mainScript.centeringVariable == mainScript.enemyObjectPositionRow))
         {
-            SceneManager.LoadScene("HomeWins");
+            Debug.Log("should endthe game");
+            SceneManager.LoadScene(2);
         }
     }
     public void shootDirectionGenerate()

@@ -35,6 +35,7 @@ public class moveHereScript : MonoBehaviour, IPointerDownHandler
 
     public void UpdateNameToMove(string name)
     {
+        nameToMove = "";
         nameToMove = name;
     }
     public void OnPointerDown(PointerEventData eventData)

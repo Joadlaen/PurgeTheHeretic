@@ -113,7 +113,8 @@ public class EnemyTankScript : MonoBehaviour, IPointerDownHandler
         movedPiece = true;
         if (newPosition.x + mainScript.centeringVariable == mainScript.homeObjectPositionCol && newPosition.y + mainScript.centeringVariable == mainScript.homeObjectPositionRow)
         {
-            SceneManager.LoadScene("EnemyWins");
+            Debug.Log("should endthe game");
+            SceneManager.LoadScene(3);
         }
     }
     public void shootDirectionGenerate()
@@ -124,12 +125,12 @@ public class EnemyTankScript : MonoBehaviour, IPointerDownHandler
             {
                 Vector2 position1 = new Vector2(enemyTankMovement.x + (y * x * SPACING) - centeringVariable, enemyTankMovement.y);
                 Vector2 position2 = new Vector2(enemyTankMovement.x, enemyTankMovement.y + (y * x * SPACING) - centeringVariable);
-                if (position1.x < mainScript.ROWS - mainScript.centeringVariable)
+                if (position1.x >= 0 + mainScript.centeringVariable && position1.y < mainScript.COLUMNS + mainScript.centeringVariable)
                 {
                     GameObject shoot = Instantiate(shootTint, position1, Quaternion.identity);
                     shoot.GetComponent<shootThisScript>().UpdateNameShooting("EnTank");
                 }
-                if (position2.y < mainScript.COLUMNS - mainScript.centeringVariable)
+                if (position2.y >= 0 + mainScript.centeringVariable && position1.x < mainScript.ROWS + mainScript.centeringVariable)
                 {
                     GameObject shoot = Instantiate(shootTint, position2, Quaternion.identity);
                     shoot.GetComponent<shootThisScript>().UpdateNameShooting("EnTank");
