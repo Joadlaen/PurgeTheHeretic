@@ -28,14 +28,17 @@ public class changePhaseScript : MonoBehaviour, IPointerDownHandler
         homeTankScript.movedPiece = false;
         enemyTankScript.movedPiece = false;
         enemySquadScript.movedPiece = false;
+
         Debug.Log(mainScript.CurrentPhase);
         Debug.Log(mainScript.Turn);
         Debug.Log(mainScript.CurrentPhase);
+
         if (mainScript.CurrentPhase == "Movement")
         {
             //mainScript.CurrentPhase = "Shooting";
             Debug.Log("it's always " + mainScript.CurrentPhase);
         }
+
         //until shooting is working, this will not be possible to activate
         else if (mainScript.CurrentPhase == "Shooting")
         {
@@ -50,10 +53,13 @@ public class changePhaseScript : MonoBehaviour, IPointerDownHandler
                 mainScript.CurrentPhase = "Movement";
             }
         }
+
         Debug.Log(mainScript.CurrentPhase);
         Debug.Log(mainScript.Turn);
+
         turnIndicate.text = mainScript.Turn;
         phaseIndicate.text = mainScript.CurrentPhase;
+
         MoveCleanup();
         ShootCleanup();
         RemoveAll();
